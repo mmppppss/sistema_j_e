@@ -1,5 +1,15 @@
 # Sistema de informacion para la ONG Joven esperanza
-Estructura de archivos:
+Proyecto para la materia de Sistemas de Informacion I
+Integrantes:
+    - Flores Prado Josue Miguel
+    - Nuñez Ardaya Melissa Shanner
+    - Pozo Soliz Marthel Pedro
+
+## Descripción:
+El sistema de informacion se encarga de la gestión de la información de la ONG Joven Esperanza.
+
+
+## Estructura de archivos:
 ```
 /
 ├── api/                            #Carpeta de la api
@@ -18,4 +28,49 @@ Estructura de archivos:
 ├── frontend/                       #Carpeta frontend REACT
 │
 └── README.md                       #README
+```
+
+## Flujo de aplicacion:
+```
+              ┌─────────┐
+              │DATABASE │
+              └┬────────┘
+               │      ▲  
+               ▼      │  
+┌─────────┐──►┌───────┴─┐
+│ CLIENTE │   │   API   │
+└─────────┘◄──└─────────┘
+```
+
+## Flujo de API:
+```
+                 ┌───────────┐                   
+                 │ DATABASE  │                   
+                 └─────────┬─┘                   
+                   ▲       │                     
+                   │       ▼             ┌───┐   
+                 ┌─┴─────────┐ True─────►│JWT│   
+Credenciales ──► │ Login.php │           └─┬─┘   
+                 └───────────┘ False       │     
+                       ▲         │         │     
+                       └─────────┘         │     
+                                           │     
+                                           │     
+                 ┌───────────┐             │     
+   Peticion  ───►│ Index.php │◄────────────┘     
+                 └───────────┘                   
+                     JWT?                        
+                      ▼                          
+                GET POST UP DEL   ┌─────────────┐
+                 │   │   │   └───►│ Controlador │
+                 │   │   │        └─────────────┘
+                 │   │   │        ┌─────────────┐
+                 │   │   └───────►│ Controlador │
+                 │   │            └─────────────┘
+                 │   │            ┌─────────────┐
+                 │   └───────────►│ Controlador │
+                 │                └─────────────┘
+                 │                ┌─────────────┐
+                 └───────────────►│ Controlador │
+                                  └─────────────┘
 ```
