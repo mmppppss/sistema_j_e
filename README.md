@@ -1,9 +1,9 @@
 # Sistema de informacion para la ONG Joven esperanza
 Proyecto para la materia de Sistemas de Informacion I
 Integrantes:
-    - Flores Prado Josue Miguel
-    - Nuñez Ardaya Melissa Shanner
-    - Pozo Soliz Marthel Pedro
+- Flores Prado Josue Miguel
+- Nuñez Ardaya Melissa Shanner
+- Pozo Soliz Marthel Pedro
 
 ## Descripción:
 El sistema de informacion se encarga de la gestión de la información de la ONG Joven Esperanza.
