@@ -8,6 +8,11 @@ Integrantes:
 ## Descripción:
 El sistema de informacion se encarga de la gestión de la información de la ONG Joven Esperanza.
 
+## ToDo
+- [x] Manejar sesion con JWT json web token
+- [ ] manejar peticiones get, post, del, update
+- [ ] definir rutas
+- [ ] hacer frontend
 
 ## Estructura de archivos:
 ```
