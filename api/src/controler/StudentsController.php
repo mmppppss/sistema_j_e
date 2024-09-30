@@ -36,7 +36,6 @@ class StudentController {
             header('Location: /');
         } else {
             $student = $this->studentModel->getById($id);
-            include '../app/views/edit.php';
         }
     }
 
