@@ -7,7 +7,10 @@ Integrantes:
 
 ## Descripción:
 El sistema de informacion se encarga de la gestión de la información de la ONG Joven Esperanza.
-
+## Tecnologias a usar
+- PHP
+- MySQL
+- ReactJS
 ## ToDo
 - [x] Manejar sesion con JWT json web token
 - [ ] manejar peticiones get, post, del, update
