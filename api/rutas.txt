@@ -1,0 +1,34 @@
+Iniciar sesion
+POST /login.php 
+{
+	"username": "string",
+	"password": "string"
+}
+
+lista de Niños 
+GET /niños
+
+un solo niño con {id}
+GET /niños/{id}
+
+crear un niño
+POST /niños
+{
+	"ci": "string",
+	"nombre": "string",
+	"apellido_pat": "string",
+	"apellido_mat": "string",
+	"sexo": 'car',
+	"telefono": "string",
+	"fecha_nacimiento": "string",
+}
+
+actualizar un niño
+PUT /niños/{id}
+{
+	"campo": "nuevo valor"
+}
+
+borrar un niño
+DELETE /niños/{id}
+

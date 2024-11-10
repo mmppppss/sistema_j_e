@@ -1,0 +1,106 @@
+@startuml
+!theme mono
+left to right direction
+
+class usuario{
+id
+nombre_usuario
+hash_password
+permisos
+}
+class personal{
+id
+ci
+nombre
+apellido_pat
+apellido_mat
+telefono
+correo
+sexo
+direcccion
+}
+class profesor{
+especialidad
+}
+class voluntario{
+ocupacion
+}
+class Voluntario_de_Materia{
+id
+}
+class medico{
+especialidad_medica
+}
+class niño{
+id
+ci
+nombre
+apellido_pat
+apellido_mat
+sexo
+telefono
+fecha_nacimiento
+}
+class tutor{
+id
+ci
+nombre
+apellido_pat
+apellido_mat
+sexo
+telefono
+correo
+direccion
+}
+class materia{
+id
+nombre
+descripcion
+fecha
+hora
+}
+class actividad{
+id
+nombre
+desccripcion
+fecha
+hora
+}
+class detalle_registro_mat{
+id
+}
+class detalle_registro_act{
+}
+class detalle_registro_med{
+	fecha
+hora
+}
+class asistencia{
+fecha
+hora
+}
+
+class administrador{
+
+}
+
+niño "*"--"1" tutor
+niño ""--"" materia
+(niño, materia) .. detalle_registro_mat
+profesor "1"--"*" materia
+voluntario "1"--"*" materia
+niño ""--"" actividad
+Voluntario_de_Materia"*"--"1" materia
+Voluntario_de_Materia"1"--"*" voluntario
+(niño, actividad) .. detalle_registro_act
+voluntario ""--"" actividad
+niño ""--"" medico
+(niño, medico) .. detalle_registro_med
+(voluntario, actividad)..detalle_ActVol
+usuario "1"--"1" personal
+materia "1"--"1" asistencia
+personal <-- administrador
+personal <-- voluntario
+personal <-- medico
+personal <-- profesor
+@enduml

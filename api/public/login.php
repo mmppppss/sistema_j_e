@@ -4,7 +4,7 @@ function login(){
 	$db = $database->getConnection();
 	$USERNAME = $_GET['username'];
 	$PASSWORD = $_GET['password'];
-	$query = "SELECT hash_password FROM personal WHERE nombre = :username";
+	$query = "SELECT hashpass FROM usuario WHERE username = :username";
 	$stmt = $db->prepare($query);
 	$stmt->execute(['username' => $USERNAME]);
 	$hash = $stmt->fetchColumn();

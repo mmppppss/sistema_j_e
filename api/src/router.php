@@ -5,6 +5,7 @@
 header('Content-Type: application/json');
 require_once '../src/config/Database2.php';
 require_once 'controler/StudentsController.php';
+require_once 'controler/Niño.php';
 class Router
 {
 	
@@ -12,9 +13,11 @@ class Router
 	 * 
 	 */
 	public $estcontrol;
+	public $niño;
 	public function __construct(){
 		global $pdo;
 		$this->estcontrol = new StudentController($pdo);
+		$this->niño = new NiñoControlador($pdo);
 		self::Route();
 	}
 	public function Route(){
@@ -48,6 +51,37 @@ class Router
 				$this->estcontrol->getAll();
 			}
 		}
+		switch ($url[0]) {
+			case 'ninos':
+				switch ($method) {
+					case 'GET':
+						if(isset($url[1]) && is_numeric($url[1])){
+							$this->niño->getNiño($url[1]);
+						}else{
+							$this->niño->getAll();
+						}
+						break;
+					case 'POST':
+						$this->niño->createNiño();
+						break;
+					case 'PUT':
+						if(isset($url[1]) && is_numeric($url[1]))
+							$this->niño->editNino($url[1]);
+						break;
+					case 'DELETE':
+						if(isset($url[1]) && is_numeric($url[1]))
+							$this->niño->deleteNino($url[1]);
+						break;
+					default:
+						echo json_encode(['error' => 'method not found']);
+						break;
+				}
+				break;
+			default:
+				# code...
+				break;
+		}
+		
 	}
 }
 
