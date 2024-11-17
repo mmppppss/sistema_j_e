@@ -6,6 +6,7 @@ header('Content-Type: application/json');
 require_once '../src/config/Database2.php';
 require_once 'controler/StudentsController.php';
 require_once 'controler/Niño.php';
+require_once 'controler/Tutor.php';
 class Router
 {
 	
@@ -14,10 +15,12 @@ class Router
 	 */
 	public $estcontrol;
 	public $niño;
+	public $tutor;
 	public function __construct(){
 		global $pdo;
 		$this->estcontrol = new StudentController($pdo);
 		$this->niño = new NiñoControlador($pdo);
+		$this->tutor = new TutorControlador($pdo);
 		self::Route();
 	}
 	public function Route(){
@@ -77,6 +80,30 @@ class Router
 						break;
 				}
 				break;
+			case 'tutor':
+				switch ($method) {
+					case 'GET':
+						if(isset($url[1]) && is_numeric($url[1])){
+							$this->tutor->getTutor($url[1]);
+						}else{
+							$this->tutor->getAll();
+						}
+						break;
+					case 'POST':
+						$this->tutor->createTutor();
+						break;
+					case 'PUT':
+						if(isset($url[1]) && is_numeric($url[1]))
+							$this->tutor->editTutor($url[1]);
+						break;
+					case 'DELETE':
+						if(isset($url[1]) && is_numeric($url[1]))
+							$this->	tutor->deleteTutor($url[1]);
+						break;
+					default:
+						echo json_encode(['error' => 'method not found']);
+						break;
+				}
 			default:
 				# code...
 				break;
