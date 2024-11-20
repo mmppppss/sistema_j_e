@@ -7,6 +7,7 @@ require_once '../src/config/Database2.php';
 require_once 'controler/StudentsController.php';
 require_once 'controler/Niño.php';
 require_once 'controler/Tutor.php';
+require_once 'controler/Materia.php';
 class Router
 {
 	
@@ -16,11 +17,13 @@ class Router
 	public $estcontrol;
 	public $niño;
 	public $tutor;
+	public $materia;
 	public function __construct(){
 		global $pdo;
 		$this->estcontrol = new StudentController($pdo);
 		$this->niño = new NiñoControlador($pdo);
 		$this->tutor = new TutorControlador($pdo);
+		$this->materia = new MateriaControlador($pdo);
 		self::Route();
 	}
 	public function Route(){
@@ -104,6 +107,33 @@ class Router
 						echo json_encode(['error' => 'method not found']);
 						break;
 				}
+				break;
+			case 'materia':
+				switch ($method) {
+					case 'GET':
+						if(isset($url[1]) && is_numeric($url[1])){
+							$this->materia->getMateria($url[1]);
+						}else{
+							$this->materia->getAll();
+						}
+						break;
+					case 'POST':
+						$this->materia->createMateria();
+						break;
+					case 'PUT':
+						if(isset($url[1]) && is_numeric($url[1]))
+							$this->materia->editMateria($url[1]);
+						break;
+					case 'DELETE':
+						if(isset($url[1]) && is_numeric($url[1]))
+							$this->materia->deleteMateria($url[1]);
+						break;
+					default:
+						echo json_encode(['error' => 'method not found']);
+						break;
+				}
+				break;
+
 			default:
 				# code...
 				break;
