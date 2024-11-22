@@ -8,6 +8,7 @@ require_once 'controler/StudentsController.php';
 require_once 'controler/Niño.php';
 require_once 'controler/Tutor.php';
 require_once 'controler/Materia.php';
+require_once 'controler/Usuario.php';
 class Router
 {
 	
@@ -18,12 +19,14 @@ class Router
 	public $niño;
 	public $tutor;
 	public $materia;
+	public $usuario;
 	public function __construct(){
 		global $pdo;
 		$this->estcontrol = new StudentController($pdo);
 		$this->niño = new NiñoControlador($pdo);
 		$this->tutor = new TutorControlador($pdo);
 		$this->materia = new MateriaControlador($pdo);
+		$this->usuario = new UsuarioControlador($pdo);
 		self::Route();
 	}
 	public function Route(){
@@ -127,6 +130,31 @@ class Router
 					case 'DELETE':
 						if(isset($url[1]) && is_numeric($url[1]))
 							$this->materia->deleteMateria($url[1]);
+						break;
+					default:
+						echo json_encode(['error' => 'method not found']);
+						break;
+				}
+				break;
+			case 'usuario':
+				switch ($method) {
+					case 'GET':
+						if(isset($url[1]) && is_numeric($url[1])){
+							$this->usuario->getUsuario($url[1]);
+						}else{
+							$this->usuario->getAll();
+						}
+						break;
+					case 'POST':
+						$this->usuario->createUsuario();
+						break;
+					case 'PUT':
+						if(isset($url[1]) && is_numeric($url[1]))
+							$this->usuario->editUsuario($url[1]);
+						break;
+					case 'DELETE':
+						if(isset($url[1]) && is_numeric($url[1]))
+							$this->usuario->deleteUsuario($url[1]);
 						break;
 					default:
 						echo json_encode(['error' => 'method not found']);
