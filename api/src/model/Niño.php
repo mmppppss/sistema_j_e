@@ -20,7 +20,6 @@ class Niño{
 	
 	public function create($ci, $nombre, $apellido_pat, $apellido_mat, $sexo, $telefono, $fecha_nacimiento){
 		$query=$this->pdo->prepare("INSERT INTO niño (ci, nombre, apellido_pat, apellido_mat, sexo, telefono, fecha_nacimiento) VALUES (:ci, :nombre, :apellido_pat, :apellido_mat, :sexo, :telefono, :fecha_nacimiento)");
-		echo "hola";
 		$query->execute([
 			'ci' => $ci,
 			'nombre' => $nombre,

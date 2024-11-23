@@ -34,7 +34,6 @@ class TutorControlador{
 	public function editTutor($id){
 		$input = file_get_contents('php://input');
 		$data = json_decode($input, true);
-echo json_encode($data);
 		$ci = $data['ci'];
 		$nombre = $data['nombre'];
 		$apellido_pat = $data['apellido_pat'];
