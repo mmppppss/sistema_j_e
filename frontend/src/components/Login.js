@@ -32,7 +32,7 @@ export default function Login(props) {
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.session) {
-					const tiempoExpiracion = new Date().getTime() + 3000;
+					const tiempoExpiracion = new Date().getTime() + 3600000;
 					localStorage.setItem('session', JSON.stringify({ data, expiresAt: tiempoExpiracion }));
                     props.iniciarSession(data); // Guarda la sesión
                     window.location.href = '/inicio'; // Redirige a /inicio
