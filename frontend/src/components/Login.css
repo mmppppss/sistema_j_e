@@ -38,7 +38,7 @@ form>input{
 	border: none;
 	padding: 12px;
 }
-form>input[type="submit"]{
+form>input[type="button"]{
 	background: #01943C;
 	color: #282828;
 	width: 40%;
@@ -50,4 +50,8 @@ form>input[type="submit"]{
 }
 .labelLogin{
 	font-size: 1.2em;
+}
+.errorLabel{
+	color: red;
+	font-size: 0.8em;
 }
