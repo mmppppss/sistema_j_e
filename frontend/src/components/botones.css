@@ -1,0 +1,41 @@
+.boton{
+	position:relative;
+	width:25%;
+	float:left;
+	margin:3%	;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 25vh;
+}
+.boton::before {    
+	content: "";
+	border-radius:25px;
+	background: url(../../public/media/imagen1.jpg);	
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
+.boton>input{
+	position: relative;
+	background: #01943C;
+	color: #282828;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	border-radius:36px;
+	border: none;
+	width: 40%;
+	height: 20%;
+	font-size:1em;
+
+	
+}
+.contenedorBotones{
+	width:100%;
+	margin:4%
+}
+
