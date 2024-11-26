@@ -197,6 +197,18 @@ class Router
                     case 'GET':
                         if (isset($url[1]) && is_numeric($url[1])) {
                             $this->personal->getPersonal($url[1]);
+                        } else if (isset($url[1]) && !is_numeric($url[1])) {
+                            $this->personal->buscarPersonal($url[1]);
+                        } else if (isset($url[1]) && !is_numeric($url[1])) {
+                            $this->personal->buscarActividad($url[1]);
+                        } else if (isset($url[1]) && !is_numeric($url[1])) {
+                            $this->personal->buscarniño($url[1]);
+                        } else if (isset($url[1]) && !is_numeric($url[1])) {
+                            $this->personal->buscarTutor($url[1]);
+                        } else if (isset($url[1]) && !is_numeric($url[1])) {
+                            $this->personal->buscarProfesor($url[1]);
+                        } else if (isset($url[1]) && !is_numeric($url[1])) {
+                            $this->personal->buscarMateria($url[1]);
                         } else {
                             $this->personal->getAll();
                         }
@@ -308,6 +320,7 @@ class Router
                         } else {
                             $this->administrador->getAll();
                         }
+
                         break;
                     case 'POST':
                         $this->administrador->createAdministrador();

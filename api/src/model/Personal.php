@@ -84,4 +84,46 @@ class Personal
         $query->execute(['id' => $id]);
         return $query;
     }
+
+    public function buscar($nombre)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM personal WHERE nombre like :nombre");
+        $stmt->execute(['nombre' => "%$nombre%"]);
+        return $stmt->fetch();
+    }
+
+    public function buscarAct($nombre)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM actividad WHERE nombre like :nombre");
+        $stmt->execute(['nombre' => "%$nombre%"]);
+        return $stmt->fetch();
+    }
+
+    public function buscarNi($nombre)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM nino WHERE nombre like :nombre");
+        $stmt->execute(['nombre' => "%$nombre%"]);
+        return $stmt->fetch();
+    }
+
+    public function buscarTu($nombre)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM tutor WHERE nombre like :nombre");
+        $stmt->execute(['nombre' => "%$nombre%"]);
+        return $stmt->fetch();
+    }
+
+    public function buscarProfe($nombre)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM profesor WHERE nombre like :nombre");
+        $stmt->execute(['nombre' => "%$nombre%"]);
+        return $stmt->fetch();
+    }
+
+    public function buscarMate($nombre)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM materia WHERE nombre like :nombre");
+        $stmt->execute(['nombre' => "%$nombre"]);
+        return $stmt->fetch();
+    }
 }

@@ -46,8 +46,8 @@ class PersonalControlador
 
     public function editPersonal($id)
     {
-		$input = file_get_contents('php://input');
-		$data = json_decode($input, true);
+        $input = file_get_contents('php://input');
+        $data = json_decode($input, true);
 
         $nombre = $data['nombre'];
         $apellido_pat = $data['apellido_pat'];
@@ -69,5 +69,47 @@ class PersonalControlador
         $res = $this->modeloPersonal->delete($id);
 
         echo json_encode(['message' => 'Personal eliminado con éxito', 'result' => $res]);
+    }
+
+    public function buscarPersonal($nombre)
+    {
+        $res = $this->modeloPersonal->buscar($nombre);
+
+        echo json_encode($res);
+    }
+
+    public function buscarActividad($nombre)
+    {
+        $res = $this->modeloPersonal->buscarAct($nombre);
+
+        echo json_encode($res);
+    }
+
+    public function buscarniño($nombre)
+    {
+        $res = $this->modeloPersonal->buscarNi($nombre);
+
+        echo json_encode($res);
+    }
+
+    public function buscarTutor($nombre)
+    {
+        $res = $this->modeloPersonal->buscarTu($nombre);
+
+        echo json_encode($res);
+    }
+
+    public function buscarProfesor($nombre)
+    {
+        $res = $this->modeloPersonal->buscarProfe($nombre);
+
+        echo json_encode($res);
+    }
+
+    public function buscarMateria($nombre)
+    {
+        $res = $this->modeloPersonal->buscarMate($nombre);
+
+        echo json_encode($res);
     }
 }
