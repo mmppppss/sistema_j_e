@@ -1,4 +1,5 @@
 import React from "react"
+import { useState, useEffect } from 'react';
 import"./listaNiño.css"
 
 function elemento(niño){
@@ -13,9 +14,18 @@ function elemento(niño){
 	)
 }
 export default function Lista(){
-	var niños=[{"id":2,"ci":123,"nombre":"juan","apellido_pat":"villa","apellido_mat":"sans","sexo":"m","id_tutor":123,"telefono":123123,"fecha_nacimiento":"2024-11-09"},{"id":3,"ci":1230,"nombre":"pepe","apellido_pat":"perez","apellido_mat":"chavez","sexo":"m","id_tutor":988,"telefono":1231212,"fecha_nacimiento":"2012-12-12"}]
+	const [lista, setLista] = useState([]);
+	useEffect(()=>{
+		fetch('http://54.91.79.235/ninos')
+		.then((response) => response.json())
+		.then((data) => {
+			setLista(data)
+			console.log(data)
+		})
+	}, [])
+	
 	var lineas=[];
-	for(var i of niños){
+	for(var i of lista){
 		lineas.push(elemento(i))
 	}
 	return(
@@ -27,7 +37,24 @@ export default function Lista(){
 				<th>Telefono</th>
 				<th>Ver perfil</th>
 			</tr>
-			{lineas}
+			<tr>
+				<td><input type="text"/></td>
+				<td><input type="text"/></td>
+				<td><input type="text"/></td>
+				<td><input type="text"/></td>
+				<td><input type="buttom" value="guardar"/></td>
+			</tr>
+			{lista.map((niño) => (
+				<tr key={niño.id}>
+					<td>{niño.id}</td>
+
+					<td>{niño.nombre} {niño.apellido_mat} {niño.apellido_pat}</td>
+
+					<td>{niño.id_tutor}</td>
+		        	<td>{niño.telefono}</td>
+        			<td><a href="google.com">perfil</a></td>
+        		</tr>
+			))}
 		</table>
 	)
 }

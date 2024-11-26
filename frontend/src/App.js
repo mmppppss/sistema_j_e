@@ -3,12 +3,11 @@ import './css/App.css';
 import Login from "./components/Login";
 import Botones from "./components/botones"
 import Lista from "./components/listaNiño"
+import Asistencia from './components/Asistencia';
 
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
-
-
 
 	useEffect(()=>{
 		setRuta(window.location.pathname)
@@ -40,6 +39,9 @@ function App() {
 				content=<Login iniciarSession={setSession}/>
 				logo=null
 			break
+			case "/asistencia":
+				content=<Asistencia/>
+			break
 			default:
 				content=<h1>alt</h1>
 			break
@@ -52,6 +54,21 @@ function App() {
 		<div className="App">
 			{logo}
 			{content}
+		<div class="footer-basic">
+		<footer>
+		<div class="social">
+			<a href="mailto:info@joven-esperanza.de"> <img src="media/envelope-fill.svg" alt=""/></a>
+			<a href="https://www.linkedin.com/company/joven-esperanza-e.v./"><img src="media/linkedin.svg"/></a>
+			<a href="https://www.instagram.com/joven_esperanza_ev/"><img src="media/instagram.svg"/></a>
+			<a href="https://www.facebook.com/JovenEsperanza"><img src="media/facebook.svg"/></a>
+		</div>
+		<ul class="list-inline">
+		<li class="list-inline-item"><a href="#">Inicio</a></li>
+		<li class="list-inline-item"><a href="#">Sobre nosotros</a></li>
+		</ul>
+		<p class="copyright">Joven Esperanza © 2024</p>
+		</footer>
+		</div>
 		</div>
 	);
 }
