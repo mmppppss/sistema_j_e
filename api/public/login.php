@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 function login()
 {
 	$database = new Database();
@@ -11,7 +12,9 @@ function login()
 	$row = $stmt->fetch();
 	$hash = $row['hash_password'];
 	$permission = $row['permission'];
-	echo $permission;
+	/*echo $hash_password;
+	echo hashMD5($password)
+	echo $permission;*/
 	if ($hash == hashMD5($PASSWORD)) {
 		$_SESSION['token'] = generateToken();
 		return json_encode([
