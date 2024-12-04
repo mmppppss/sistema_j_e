@@ -1,7 +1,13 @@
 import React from "react"
 import "./botones.css"
 
-
+function defineButtons(permission){
+	if(permission == 0){
+		return ["Ver Niños", "Ver Materias", "Ver Actividades"];
+	}else if(permission == 1){//maestro
+		return ["Ver Niños", "Ver Materias"];
+	}
+}
 
 function Boton(nombreBoton){
 	return(
@@ -11,7 +17,7 @@ function Boton(nombreBoton){
 	)
 }
 export default function Botones(props){
-	var a=["hola","actividad","pedro","meli","kia","meli mala", "malal"]
+	var a=defineButtons(props.permission);
 	var x=[];
 	for(var i of a){
 		x.push(Boton(i))

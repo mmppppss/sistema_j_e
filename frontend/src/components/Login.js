@@ -28,7 +28,7 @@ export default function Login(props) {
 			return
 		}
 			
-		fetch('http://54.91.79.235/login.php?username='+nombre+'&password='+password)
+		fetch('http://100.25.250.69/login.php?username='+nombre+'&password='+password)
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.session) {

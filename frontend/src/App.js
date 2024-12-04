@@ -30,7 +30,7 @@ function App() {
 		logo=<img className="logo" src="logo192.png" alt=""/>
 		switch (ruta){
 			case "/inicio":
-				content=<Botones></Botones>
+				content=<Botones permission={session.permission}></Botones>
 			break 
 			case "/lista":
 				content=<Lista/>
