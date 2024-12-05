@@ -10,7 +10,7 @@ function App() {
 	const [ruta, setRuta] = useState([])
 
 	useEffect(()=>{
-		setRuta(window.location.pathname)
+		setRuta(window.location.pathname.split("/")[1])
 		const storedSession = localStorage.getItem('session');
         if (storedSession) {
 			const sessionData = JSON.parse(storedSession);
@@ -29,21 +29,21 @@ function App() {
 	if(session.session){
 		logo=<img className="logo" src="logo192.png" alt=""/>
 		switch (ruta){
-			case "/inicio":
+			case "inicio":
 				content=<Botones permission={session.permission}></Botones>
 			break 
-			case "/lista":
+			case "lista":
 				content=<Lista/>
 			break
-			case "/login":
+			case "login":
 				content=<Login iniciarSession={setSession}/>
 				logo=null
 			break
-			case "/asistencia":
+			case "asistencia":
 				content=<Asistencia/>
 			break
 			default:
-				content=<h1>alt</h1>
+				content=<h1>cargar 404</h1>
 			break
 		}
 	}else{

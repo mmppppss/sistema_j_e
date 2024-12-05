@@ -4,17 +4,50 @@ import "./botones.css"
 function defineButtons(permission){
 	var botones={
 		niño:{
-		name: "Ver Niños",
-		route: "/lista"
-	},
+			name: "Ver Niños",
+			route: "/lista"
+		},
 		asistencia:{
-		name: "Ver asistencia",
-		route: "/asistencia"
-	}}
-	if(permission == 0){
-		return [botones.niño, botones.asistencia]
+			name: "Ver asistencia",
+			route: "/asistencia"
+		},
+		lista:{
+			name:"Ver lista",
+			route:"/lista"
+		},
+		historialMedico:{
+			name:"Ver historial medico",
+			route:"/historialmedico"
+		},
+		gesActividades:{
+			name:"Gestionar actividades",
+			route:"/actividades"
+		},
+		gesNiños:{
+			name:"Gestionar niños",
+			route:"/niños"
+		},
+		gesTutores:{
+			name:"Gestionar tutores",
+			route:"/tutores"
+		},
+		gesMaterias:{
+			name:"Gestionar materias",
+			route:"/materias"
+		},
+		gesVoluntario:{
+			name:"Gestionar voluntario",
+			route:"/voluntario"
+		}
+	}
+	if(permission == 0){//administrados
+		return [botones.niño, botones.gesActividades, botones.gesNiños,botones.gesTutores]
 	}else if(permission == 1){//maestro
-		return [botones.asistencia]
+		return [botones.gesMaterias]
+	}else if(permission==2){//medico
+		return[botones.historialMedico]
+	}else if(permission==3){
+		return[botones.gesActividades, botones.gesMaterias]
 	}
 }
 
