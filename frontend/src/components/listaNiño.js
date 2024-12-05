@@ -16,7 +16,7 @@ function elemento(niño){
 export default function Lista(){
 	const [lista, setLista] = useState([]);
 	useEffect(()=>{
-		fetch('http://54.91.79.235/ninos')
+		fetch('http://100.25.250.69/ninos')
 		.then((response) => response.json())
 		.then((data) => {
 			setLista(data)
