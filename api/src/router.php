@@ -15,6 +15,7 @@ require_once 'controler/MedicoControlador.php';
 require_once 'controler/VoluntarioControlador.php';
 require_once 'controler/ProfesorControlador.php';
 require_once 'controler/AdministradorControlador.php';
+require_once 'controler/HistorialMedicoControlador.php';
 
 class Router
 {
@@ -27,7 +28,8 @@ class Router
     public $medico;
     public $voluntario;
     public $profesor;
-    public $administrador;
+	public $administrador;
+	public $historial;
 
     public function __construct()
     {
@@ -41,7 +43,8 @@ class Router
         $this->medico = new MedicoControlador($pdo);
         $this->voluntario = new VoluntarioControlador($pdo);
         $this->profesor = new ProfesorControlador($pdo);
-        $this->administrador = new AdministradorControlador($pdo);
+		$this->administrador = new AdministradorControlador($pdo);
+		$this->historial = new HistorialMedicoControlador($pdo);
 
         self::Route();
     }
@@ -256,7 +259,21 @@ class Router
                         break;
                 }
                 break;
-
+			
+			case 'historial':
+				switch ($method) {
+					case 'GET':
+						if (isset($url[1]) && is_numeric($url[1])) {
+							$this->historial->getHistorial($url[1]);
+						} else {
+							$this->historial->getAll();
+						}
+						break;
+					default:
+						echo json_encode(['error' => 'method not found']);
+						break;
+				}
+				break;
 
             case 'voluntario':
                 switch ($method) {
