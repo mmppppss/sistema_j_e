@@ -5,6 +5,7 @@ import Botones from "./components/botones"
 import Lista from "./components/listaNiño"
 import Asistencia from './components/Asistencia';
 import AnalisisMedico from './components/AnalisisMedico';
+import HistorialMedico from './components/HistorialMedico';
 
 function App() {
 	const [session, setSession] = useState([])
@@ -46,6 +47,9 @@ function App() {
 			break
 			case "analisis":
 				content=<AnalisisMedico/>
+			break
+			case "historialmedico":
+				content=<HistorialMedico/>
 			break
 			default:
 				content=<h1>cargar 404</h1>
