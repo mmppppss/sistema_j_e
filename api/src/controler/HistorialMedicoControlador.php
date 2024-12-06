@@ -46,10 +46,7 @@ class HistorialMedicoControlador{
 		echo json_encode($res);
 	}
 
-	public function deleteHistorial($id){
-		$res = $this->modeloHistorial->delete($id);
-		echo json_encode($res);
-	}
+	
 }
 
 ?>
