@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import Botones from "./components/botones"
 import Lista from "./components/listaNiño"
 import Asistencia from './components/Asistencia';
+import AnalisisMedico from './components/AnalisisMedico';
 
 function App() {
 	const [session, setSession] = useState([])
@@ -11,6 +12,7 @@ function App() {
 
 	useEffect(()=>{
 		setRuta(window.location.pathname.split("/")[1])
+		console.log (ruta)
 		const storedSession = localStorage.getItem('session');
         if (storedSession) {
 			const sessionData = JSON.parse(storedSession);
@@ -41,6 +43,9 @@ function App() {
 			break
 			case "asistencia":
 				content=<Asistencia/>
+			break
+			case "analisis":
+				content=<AnalisisMedico/>
 			break
 			default:
 				content=<h1>cargar 404</h1>
