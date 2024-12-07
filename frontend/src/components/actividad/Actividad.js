@@ -51,6 +51,8 @@ export default function Actividad(){
 				<th>descripcion</th>
 				<th>Fecha</th>
 				<th>Hora</th>
+				<th></th>
+				<th><input type="button" onClick={()=>{window.location.href=`/crearactividad`}} value="Crear Actividad"/></th>
 			</tr>
             {lineas}
 		</table>
