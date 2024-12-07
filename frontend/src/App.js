@@ -6,6 +6,7 @@ import Lista from "./components/listaNiño"
 import Asistencia from './components/Asistencia';
 import HistorialMedico from './components/HistorialMedico';
 import CrearUsuario from './components/CrearUsuario';
+import {Error404, Error401} from './components/404'
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
@@ -50,10 +51,12 @@ function App() {
 			case "crearusuario":
 				if(session.permission==0){
 					content=<CrearUsuario/>
+				}else{
+					content=<Error401/>
 				}
 			break
 			default:
-				content=<h1>cargar 404</h1>
+				content=<Error404/>
 			break
 		}
 	}else{
