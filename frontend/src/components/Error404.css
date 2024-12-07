@@ -1,0 +1,63 @@
+
+/* Contenedor principal */
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+/* Sección de imagen */
+.contenedorImagen {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedorImagen > img {
+    padding: 20px;
+    border-radius: 60px;
+    width: 65%;
+    opacity: 0.75;
+}
+
+/* Sección del mensaje */
+.contenedorFormulario {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.titulo404 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #282828;
+    margin-bottom: 20px;
+}
+
+.mensaje404 {
+    font-size: 1.2em;
+    color: #282828;
+    margin-bottom: 20px;
+}
+
+/* Botón de volver */
+.botonVolver {
+    background: #01943C;
+    color: #F6F7F8;
+    border-radius: 36px;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.botonVolver:hover {
+    background: #01682E;
+    color: white;
+}

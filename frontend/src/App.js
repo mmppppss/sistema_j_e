@@ -4,14 +4,21 @@ import Login from "./components/Login";
 import Botones from "./components/botones"
 import Lista from "./components/listaNiño"
 import Asistencia from './components/Asistencia';
+import AnalisisMedico from './components/AnalisisMedico';
 import HistorialMedico from './components/HistorialMedico';
 import CrearUsuario from './components/CrearUsuario';
+import {Error404, Error401} from './components/404'
+import {ActividadVoluntario, MateriaVoluntario} from './components/GestionarVoluntario';
+import CrearActividad from './components/actividad/CrearActividad';
+import ActualizarActividad from './components/actividad/ActualizarActividad';
+import Actividad from './components/actividad/Actividad';
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
 
 	useEffect(()=>{
 		setRuta(window.location.pathname.split("/")[1])
+		console.log (ruta)
 		const storedSession = localStorage.getItem('session');
         if (storedSession) {
 			const sessionData = JSON.parse(storedSession);
@@ -44,16 +51,41 @@ function App() {
 			case "asistencia":
 				content=<Asistencia/>
 			break
+			case "analisis":
+				content=<AnalisisMedico/>
+			break
 			case "historialmedico":
 				content=<HistorialMedico/>
 			break
 			case "crearusuario":
 				if(session.permission==0){
 					content=<CrearUsuario/>
+				}else{
+					content=<Error401/>
 				}
 			break
+			case "crearactividad":
+				if(session.permission==0){
+					content=<CrearActividad/>
+				}else{
+					content=<Error401/>
+				}
+			break
+			case "actualizaractividad":
+				if(session.permission==0){
+					content=<ActualizarActividad actividadId={window.location.pathname.split("/")[2]}/>
+				}else{
+					content=<Error401/>
+				}
+			break
+			case "actividades":
+				content=<Actividad></Actividad>
+			break
+			case "materias":
+				content=<MateriaVoluntario/>
+			break
 			default:
-				content=<h1>cargar 404</h1>
+				content=<Error404/>
 			break
 		}
 	}else{
