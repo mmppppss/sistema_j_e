@@ -1,5 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
+header('Content-Type: application/json');
 session_start();
 /*if(!isset($_SESSION['token'])){
 	echo json_encode([

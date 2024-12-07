@@ -39,12 +39,12 @@ class UsuarioControlador
         $permission = $_POST['permission']; // 0 = admin, 1 = profesor, 2 = voluntario, 3 = médico
 
         if ($permission < 0 || $permission > 3) {
-            echo json_encode(['error' => 'Invalid permission value']);
+            echo json_encode(['message' => 'Invalid permission value']);
             return;
         }
 
         $res = $this->modeloUsuario->create($username, $hashpassword, $permission);
-        echo json_encode($res);
+        echo json_encode(['result'=> 'success', 'message'=> 'Usuario creado exitosamente']);
     }
 
 
