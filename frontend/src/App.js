@@ -8,7 +8,7 @@ import AnalisisMedico from './components/AnalisisMedico';
 import HistorialMedico from './components/HistorialMedico';
 import CrearUsuario from './components/CrearUsuario';
 import {Error404, Error401} from './components/404'
-import ActividadVoluntario from './components/GestionarVoluntario';
+import {ActividadVoluntario, MateriaVoluntario} from './components/GestionarVoluntario';
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
@@ -63,6 +63,9 @@ function App() {
 			break
 			case "actividades":
 				content=<ActividadVoluntario/>
+			break
+			case "materias":
+				content=<MateriaVoluntario/>
 			break
 			default:
 				content=<Error404/>
