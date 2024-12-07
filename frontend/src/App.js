@@ -5,7 +5,7 @@ import Botones from "./components/botones"
 import Lista from "./components/listaNiño"
 import Asistencia from './components/Asistencia';
 import HistorialMedico from './components/HistorialMedico';
-
+import Crearusuario from './components/CrearUsuario';
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])

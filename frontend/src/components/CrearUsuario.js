@@ -27,17 +27,20 @@ export default function CrearUsuario(props) {
 			return
 		}
 			
+		var data = {
+			username: nombre,
+			password: password,
+			permission: permisos
+		}
 		fetch('http://100.25.250.69/usuario',
-			method=	'POST',
-			body=JSON.stringify({
-				username: nombre,
-				password: password,
-				permission: permisos
-				})
-			)
-			.then((response) => if	(response.ok) {
-				setPasswordError("Usuario creado con exito");
-			}
+			method:	'POST',
+			headers: { 'Content-Type': 'application/json', },
+			body: JSON.stringify(data),
+			).then((response) =>{
+				if (!response.ok) {
+					setPasswordError(response.statusText);
+				}
+			})
 			.catch((error) => {
 				setPasswordError("Error del servidor");
 			});
