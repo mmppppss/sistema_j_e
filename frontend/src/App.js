@@ -46,6 +46,11 @@ function App() {
 			case "historialmedico":
 				content=<HistorialMedico/>
 			break
+			case "crearusuario":
+				if(session.permission=0){
+					content=<Crearusuario/>
+				}
+			break
 			default:
 				content=<h1>cargar 404</h1>
 			break
