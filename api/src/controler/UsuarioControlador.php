@@ -43,6 +43,12 @@ class UsuarioControlador
             return;
         }
 
+        $existing = $this->modeloUsuario->getByUsername($username);
+        if ($existing) {
+            echo json_encode(['message' => 'Username already exists']);
+            return;
+        }
+
         $res = $this->modeloUsuario->create($username, $hashpassword, $permission);
         echo json_encode(['result'=> 'success', 'message'=> 'Usuario creado exitosamente']);
     }
