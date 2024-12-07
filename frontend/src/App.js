@@ -6,6 +6,7 @@ import Lista from "./components/listaNiño"
 import Asistencia from './components/Asistencia';
 import AnalisisMedico from './components/AnalisisMedico';
 import HistorialMedico from './components/HistorialMedico';
+import ActividadVoluntario from './components/GestionarVoluntario';
 
 function App() {
 	const [session, setSession] = useState([])
@@ -50,6 +51,9 @@ function App() {
 			break
 			case "historialmedico":
 				content=<HistorialMedico/>
+			break
+			case "actividades":
+				content=<ActividadVoluntario/>
 			break
 			default:
 				content=<h1>cargar 404</h1>
