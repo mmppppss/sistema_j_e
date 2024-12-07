@@ -5,7 +5,7 @@ import Botones from "./components/botones"
 import Lista from "./components/listaNiño"
 import Asistencia from './components/Asistencia';
 import HistorialMedico from './components/HistorialMedico';
-import Crearusuario from './components/CrearUsuario';
+import CrearUsuario from './components/CrearUsuario';
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
@@ -20,6 +20,7 @@ function App() {
 				setSession({ session: false });
         	} else {
             	setSession(sessionData.data);
+				console.log(sessionData.data);
         	}
         } else {
             setSession({ session: false });
@@ -47,8 +48,8 @@ function App() {
 				content=<HistorialMedico/>
 			break
 			case "crearusuario":
-				if(session.permission=0){
-					content=<Crearusuario/>
+				if(session.permission==0){
+					content=<CrearUsuario/>
 				}
 			break
 			default:

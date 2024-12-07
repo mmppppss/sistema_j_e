@@ -28,9 +28,10 @@
 	display: flex;
 	border-radius:36px;
 	border: none;
-	width: 40%;
+	padding-left: 12px;
+	padding-right: 12px;
 	height: 20%;
-	font-size:1em;
+	font-size:0.9em;
 
 	
 }

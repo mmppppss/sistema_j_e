@@ -55,3 +55,48 @@ form>input[type="button"]{
 	color: red;
 	font-size: 0.8em;
 }
+
+select {
+    background: #F6F7F8;
+    border: none;
+    border-radius: 36px;
+    width: 40%;
+    height: 40px;
+    padding: 10px;
+    font-size: 0.8em;
+    color: #282828;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+    appearance: none; /* Oculta el ícono del navegador */
+}
+
+/* Agrega una flecha personalizada */
+select::after {
+    content: '▼';
+    font-size: 1em;
+    color: #01943C;
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+}
+
+/* Cambiar estilo al enfocar */
+select:focus {
+    background: #E3F6EC;
+    border: 2px solid #01943C;
+    outline: none;
+}
+
+/* Estilo para los ítems del select */
+select option {
+    background: #F6F7F8;
+    color: #282828;
+    padding: 10px;
+    font-size: 1em;
+}
+
+/* Cambiar color al seleccionar */
+select option:checked {
+    background: #01943C;
+    color: white;
+}

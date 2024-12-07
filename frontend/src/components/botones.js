@@ -38,16 +38,20 @@ function defineButtons(permission){
 		gesVoluntario:{
 			name:"Gestionar voluntario",
 			route:"/voluntario"
+		},
+		crearUsuario:{
+			name:"Crear usuario",
+			route:"/crearusuario"
 		}
 	}
 	if(permission == 0){//administrados
-		return [botones.niño, botones.gesActividades, botones.gesNiños,botones.gesTutores]
+		return [ botones.crearUsuario, botones.niño, botones.gesActividades, botones.gesNiños,botones.gesTutores]
 	}else if(permission == 1){//maestro
 		return [botones.gesMaterias]
-	}else if(permission==2){//medico
-		return[botones.historialMedico]
-	}else if(permission==3){
+	}else if(permission==2){//voluntario
 		return[botones.gesActividades, botones.gesMaterias]
+	}else if(permission==3){//medico
+		return[botones.historialMedico]
 	}
 }
 
