@@ -50,10 +50,6 @@ class Historial{
 		return $query;
 	}
 
-	public function delete($id){
-		$query = $this->pdo->prepare("DELETE FROM analisis_medico WHERE id = :id");
-		$query->execute(['id' => $id]);
-		return $query;
-	}
+	
 }
 ?>
