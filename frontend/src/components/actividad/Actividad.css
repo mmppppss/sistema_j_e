@@ -1,0 +1,31 @@
+.titulos{
+	border-bottom: solid 2px;
+}
+td{
+	width:2%;
+}
+tr{
+	height:50px;
+}
+table{
+ border-collapse: collapse;
+	width:90%;
+	text-align:center;
+	margin:auto;
+	margin-top:50px;
+}
+input[type="button"]{
+	border-radius:36px;
+	margin: 10px;
+	border: none;
+	padding: 12px;
+	background: #01943C;
+	color: #282828;
+	width: 40%;
+	height: 13%;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+
+}
+

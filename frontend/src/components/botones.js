@@ -46,18 +46,10 @@ function defineButtons(permission){
 		crearUsuario:{
 			name:"Crear usuario",
 			route:"/crearusuario"
-		},
-		crearActividad:{
-			name:"Crear actividad",
-			route:"/crearactividad"
-		},
-		actualizarActividad:{
-			name:"Actualizar actividad",
-			route:"/actualizaractividad"
 		}
 	}
 	if(permission == 0){//administrados
-		return [ botones.crearUsuario,botones.crearActividad, botones.actualizarActividad, botones.niño, botones.gesActividades, botones.gesNiños,botones.gesTutores]
+		return [ botones.crearUsuario, botones.niño, botones.gesActividades, botones.gesNiños,botones.gesTutores]
 	}else if(permission == 1){//maestro
 		return [botones.gesMaterias]
 	}else if(permission==2){//voluntario
@@ -85,6 +77,4 @@ export default function Botones(props){
 	}
 	var resu=<div className="contenedorBotones">{x}</div>
 	return resu;
-
-	
 }
