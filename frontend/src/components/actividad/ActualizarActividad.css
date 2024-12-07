@@ -1,0 +1,60 @@
+.actualizar-actividad-form {
+    background: #E3F6EC;
+    border-radius: 20px;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.actualizar-actividad-form h2 {
+    font-size: 1.8em;
+    color: #01943C;
+    margin-bottom: 20px;
+}
+
+.actualizar-actividad-label {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #282828;
+}
+
+.actualizar-actividad-input,
+.actualizar-actividad-textarea,
+.actualizar-actividad-button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.actualizar-actividad-input,
+.actualizar-actividad-textarea {
+    background: #F6F7F8;
+    font-size: 1em;
+    color: #282828;
+}
+
+.actualizar-actividad-textarea {
+    resize: none;
+    height: 100px;
+}
+
+.actualizar-actividad-button {
+    background: #01943C;
+    color: #F6F7F8;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.actualizar-actividad-button:hover {
+    background: #01682E;
+}
