@@ -24,6 +24,13 @@ class Usuario
         return $query->fetch();
     }
 
+    public function getbyUsername($username)
+    {
+        $query = $this->pdo->prepare('SELECT * FROM usuario WHERE username = :username');
+        $query->execute(['username' => $username]);
+        return $query->fetch();
+    }
+
     // Obtener usuarios por permiso (0 = admin, 1 = profesor, 2 = voluntario, 3 = médico)
     public function getByPermission($permission)
     {
