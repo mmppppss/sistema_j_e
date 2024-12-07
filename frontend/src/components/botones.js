@@ -15,6 +15,10 @@ function defineButtons(permission){
 			name:"Ver lista",
 			route:"/lista"
 		},
+		analisis:{
+			name:"registrar analisis",
+			route:"/analisis"
+		},
 		historialMedico:{
 			name:"Ver historial medico",
 			route:"/historialmedico"

@@ -4,15 +4,18 @@ import Login from "./components/Login";
 import Botones from "./components/botones"
 import Lista from "./components/listaNiño"
 import Asistencia from './components/Asistencia';
+import AnalisisMedico from './components/AnalisisMedico';
 import HistorialMedico from './components/HistorialMedico';
 import CrearUsuario from './components/CrearUsuario';
 import {Error404, Error401} from './components/404'
+import ActividadVoluntario from './components/GestionarVoluntario';
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
 
 	useEffect(()=>{
 		setRuta(window.location.pathname.split("/")[1])
+		console.log (ruta)
 		const storedSession = localStorage.getItem('session');
         if (storedSession) {
 			const sessionData = JSON.parse(storedSession);
@@ -45,6 +48,9 @@ function App() {
 			case "asistencia":
 				content=<Asistencia/>
 			break
+			case "analisis":
+				content=<AnalisisMedico/>
+			break
 			case "historialmedico":
 				content=<HistorialMedico/>
 			break
@@ -54,6 +60,9 @@ function App() {
 				}else{
 					content=<Error401/>
 				}
+			break
+			case "actividades":
+				content=<ActividadVoluntario/>
 			break
 			default:
 				content=<Error404/>
