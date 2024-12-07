@@ -9,6 +9,8 @@ import HistorialMedico from './components/HistorialMedico';
 import CrearUsuario from './components/CrearUsuario';
 import {Error404, Error401} from './components/404'
 import ActividadVoluntario from './components/GestionarVoluntario';
+import CrearActividad from './components/actividad/CrearActividad';
+import ActualizarActividad from './components/actividad/ActualizarActividad';
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
@@ -57,6 +59,20 @@ function App() {
 			case "crearusuario":
 				if(session.permission==0){
 					content=<CrearUsuario/>
+				}else{
+					content=<Error401/>
+				}
+			break
+			case "crearactividad":
+				if(session.permission==0){
+					content=<CrearActividad/>
+				}else{
+					content=<Error401/>
+				}
+			break
+			case "actualizaractividad":
+				if(session.permission==0){
+					content=<ActualizarActividad actividadId={window.location.pathname.split("/")[2]}/>
 				}else{
 					content=<Error401/>
 				}
