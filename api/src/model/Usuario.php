@@ -40,15 +40,15 @@ class Usuario
     }
 
 
-    public function create($username, $hashpassword, $permission)
+    public function create($username, $password, $permission)
     {
         $query = $this->pdo->prepare("
             INSERT INTO usuario (username, hash_password, permission)
-            VALUES (:username, :hashpassword, :permission)
+            VALUES (:username, md5( :password ), :permission)
         ");
         $query->execute([
             'username' => $username,
-            'hashpassword' => $hashpassword,
+            'password' => $password,
             'permission' => $permission
         ]);
         return $query;
