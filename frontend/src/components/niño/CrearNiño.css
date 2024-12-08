@@ -1,0 +1,59 @@
+.crear-nino-form {
+    background: #E3F6EC;
+    border-radius: 20px;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.crear-nino-form h2 {
+    font-size: 1.8em;
+    color: #01943C;
+    margin-bottom: 20px;
+}
+
+.crear-nino-label {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #282828;
+}
+
+.crear-nino-input,
+.crear-nino-select,
+.crear-nino-button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.crear-nino-input,
+.crear-nino-select {
+    background: #F6F7F8;
+    font-size: 1em;
+    color: #282828;
+}
+
+.crear-nino-select {
+    height: 40px;
+}
+
+.crear-nino-button {
+    background: #01943C;
+    color: #F6F7F8;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.crear-nino-button:hover {
+    background: #01682E;
+}

@@ -54,10 +54,19 @@ function defineButtons(permission){
 		actualizarActividad:{
 			name:"Actualizar actividad",
 			route:"/actualizaractividad"
-		}
+		},
+		crearNino:{
+			name:"Crear niño",
+			route:"/crearnino"
+		},
+		actualizarNino:{
+			name:"Actualizar niño",
+			route:"/actualizarnino"
+		},
+
 	}
 	if(permission == 0){//administrados
-		return [ botones.crearUsuario,botones.crearActividad, botones.actualizarActividad, botones.niño, botones.gesActividades, botones.gesNiños,botones.gesTutores]
+		return [ botones.crearUsuario,botones.crearActividad,botones.crearNino, botones.actualizarNino, botones.actualizarActividad, botones.niño, botones.gesActividades, botones.gesNiños,botones.gesTutores]
 	}else if(permission == 1){//maestro
 		return [botones.gesMaterias]
 	}else if(permission==2){//voluntario

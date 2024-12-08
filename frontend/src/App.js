@@ -11,6 +11,7 @@ import {Error404, Error401} from './components/404'
 import ActividadVoluntario from './components/GestionarVoluntario';
 import CrearActividad from './components/actividad/CrearActividad';
 import ActualizarActividad from './components/actividad/ActualizarActividad';
+import CrearNino from './components/niño/CrearNiño';
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
@@ -73,6 +74,20 @@ function App() {
 			case "actualizaractividad":
 				if(session.permission==0){
 					content=<ActualizarActividad actividadId={window.location.pathname.split("/")[2]}/>
+				}else{
+					content=<Error401/>
+				}
+			break
+			case "crearnino":
+				if(session.permission==0){
+					content=<CrearNino/>
+				}else{
+					content=<Error401/>
+				}
+			break
+			case "actualizarnino":
+				if(session.permission==0){
+					content=<CrearNino ninoId={window.location.pathname.split("/")[2]}/>
 				}else{
 					content=<Error401/>
 				}
