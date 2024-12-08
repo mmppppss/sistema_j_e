@@ -1,9 +1,11 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
+header('Content-Type: application/json');
 /**
  * Router
  */
-header('Content-Type: application/json');
 require_once '../src/config/Database2.php';
 require_once 'controler/StudentsController.php';
 require_once 'controler/NiñoControlador.php';

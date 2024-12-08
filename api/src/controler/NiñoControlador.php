@@ -1,5 +1,8 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
+header('Content-Type: application/json');
 class NiñoControlador{
 	private $modeloNiño;
 
@@ -31,13 +34,15 @@ class NiñoControlador{
 	}
 
 	public function editNino($id){
-		$ci = $_POST['ci'];
-		$nombre = $_POST['nombre'];
-		$apellido_pat = $_POST['apellido_pat'];
-		$apellido_mat = $_POST['apellido_mat'];
-		$sexo = $_POST['sexo'];
-		$telefono = $_POST['telefono'];
-		$fecha_nacimiento = $_POST['fecha_nacimiento'];
+        $input = file_get_contents('php://input');
+        $data = json_decode($input, true);
+		$ci = $data['ci'];
+		$nombre = $data['nombre'];
+		$apellido_pat = $data['apellido_pat'];
+		$apellido_mat = $data['apellido_mat'];
+		$sexo = $data['sexo'];
+		$telefono = $data['telefono'];
+		$fecha_nacimiento = $data['fecha_nacimiento'];
 		$res = $this->modeloNiño->update($id, $ci, $nombre, $apellido_pat, $apellido_mat, $sexo, $telefono, $fecha_nacimiento);
 		echo json_encode($res);
 	}
