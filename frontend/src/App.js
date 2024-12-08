@@ -15,6 +15,9 @@ import Actividad from './components/actividad/Actividad';
 //niños
 import CrearNino from './components/niño/CrearNiño';
 import Lista from "./components/niño/Niños"
+//materias
+import CrearMateria from './components/materia/CrearMateria';
+import Materias from './components/materia/Materia';
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
@@ -98,8 +101,24 @@ function App() {
 
 			//materias
 			case "materias":
-				content=<MateriaVoluntario/>
+				content=<Materias/>
+				//content=<MateriaVoluntario/>
 			break
+			case "crearmateria":
+				if(session.permission==0){
+					content=<CrearMateria/>
+				}else{
+					content=<Error401/>
+				}
+			break
+			case "materiaactividad":
+				if(session.permission==0){
+					content=<CrearMateria materiaId={window.location.pathname.split("/")[2]}/>
+				}else{
+					content=<Error401/>
+				}
+			break
+
 			case "asistencia":
 				content=<Asistencia/>
 			break
