@@ -2,17 +2,19 @@ import { useState, useEffect } from 'react';
 import './css/App.css';
 import Login from "./components/Login";
 import Botones from "./components/botones"
-import Lista from "./components/listaNiño"
 import Asistencia from './components/Asistencia';
 import AnalisisMedico from './components/AnalisisMedico';
 import HistorialMedico from './components/HistorialMedico';
 import CrearUsuario from './components/CrearUsuario';
 import {Error404, Error401} from './components/404'
 import {ActividadVoluntario, MateriaVoluntario} from './components/GestionarVoluntario';
+//Actividad
 import CrearActividad from './components/actividad/CrearActividad';
 import ActualizarActividad from './components/actividad/ActualizarActividad';
-import CrearNino from './components/niño/CrearNiño';
 import Actividad from './components/actividad/Actividad';
+//niños
+import CrearNino from './components/niño/CrearNiño';
+import Lista from "./components/niño/Niños"
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
@@ -28,7 +30,6 @@ function App() {
 				setSession({ session: false });
         	} else {
             	setSession(sessionData.data);
-				console.log(sessionData.data);
         	}
         } else {
             setSession({ session: false });
@@ -39,45 +40,18 @@ function App() {
 	if(session.session){
 		logo=<img className="logo" src="logo192.png" alt=""/>
 		switch (ruta){
+			case "":
 			case "inicio":
 				content=<Botones permission={session.permission}></Botones>
-			break 
-			case "lista":
-				content=<Lista/>
 			break
 			case "login":
 				content=<Login iniciarSession={setSession}/>
 				logo=null
 			break
-			case "asistencia":
-				content=<Asistencia/>
-			break
-			case "analisis":
-				content=<AnalisisMedico/>
-			break
-			case "historialmedico":
-				content=<HistorialMedico/>
-			break
-			case "crearusuario":
-				if(session.permission==0){
-					content=<CrearUsuario/>
-				}else{
-					content=<Error401/>
-				}
-			break
-			case "crearactividad":
-				if(session.permission==0){
-					content=<CrearActividad/>
-				}else{
-					content=<Error401/>
-				}
-			break
-			case "actualizaractividad":
-				if(session.permission==0){
-					content=<ActualizarActividad actividadId={window.location.pathname.split("/")[2]}/>
-				}else{
-					content=<Error401/>
-				}
+
+			//niños
+			case "ninos":
+				content=<Lista/>
 			break
 			case "crearnino":
 				if(session.permission==0){
@@ -93,11 +67,50 @@ function App() {
 					content=<Error401/>
 				}
 			break
+				
+			//actividad
 			case "actividades":
-				content=<Actividad></Actividad>
+				content=<Actividad/>
 			break
+			case "crearactividad":
+				if(session.permission==0){
+					content=<CrearActividad/>
+				}else{
+					content=<Error401/>
+				}
+			break
+			case "actualizaractividad":
+				if(session.permission==0){
+					content=<ActualizarActividad actividadId={window.location.pathname.split("/")[2]}/>
+				}else{
+					content=<Error401/>
+				}
+			break
+
+			//personal
+			case "crearusuario":
+				if(session.permission==0){
+					content=<CrearUsuario/>
+				}else{
+					content=<Error401/>
+				}
+			break
+
+			//materias
 			case "materias":
 				content=<MateriaVoluntario/>
+			break
+			case "asistencia":
+				content=<Asistencia/>
+			break
+			case "analisis":
+				content=<AnalisisMedico/>
+			break
+			case "historialmedico":
+				content=<HistorialMedico/>
+			break
+			case "analisis":
+				content=<AnalisisMedico/>
 			break
 			default:
 				content=<Error404/>

@@ -11,7 +11,8 @@
 .boton::before {    
 	content: "";
 	border-radius:25px;
-	background: url(../../public/media/imagen1.jpg);	
+	background: url(../../public/media/imagen0.jpg);	
+	background-size: cover;
 	position: absolute;
 	top: 0px;
 	right: 0px;
