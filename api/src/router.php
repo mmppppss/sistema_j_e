@@ -16,6 +16,7 @@ require_once 'controler/VoluntarioControlador.php';
 require_once 'controler/ProfesorControlador.php';
 require_once 'controler/AdministradorControlador.php';
 require_once 'controler/HistorialMedicoControlador.php';
+require_once 'controler/ActividadControlador.php';
 
 class Router
 {
@@ -30,6 +31,8 @@ class Router
     public $profesor;
 	public $administrador;
 	public $historial;
+    public $actividad;
+
 
     public function __construct()
     {
@@ -45,6 +48,7 @@ class Router
         $this->profesor = new ProfesorControlador($pdo);
 		$this->administrador = new AdministradorControlador($pdo);
 		$this->historial = new HistorialMedicoControlador($pdo);
+        $this->actividad = new ActividadControlador($pdo);
 
         self::Route();
     }
@@ -349,6 +353,33 @@ class Router
                     case 'DELETE':
                         if (isset($url[1]) && is_numeric($url[1]))
                             $this->administrador->deleteAdministrador($url[1]);
+                        break;
+                    default:
+                        echo json_encode(['error' => 'method not found']);
+                        break;
+                }
+                break;
+
+            case 'actividad':
+                switch ($method) {
+                    case 'GET':
+                        if (isset($url[1]) && is_numeric($url[1])) {
+                            $this->actividad->getActividad($url[1]);
+                    }else {
+                        $this->actividad->getAll();
+                    }
+
+                    break;
+                    case 'POST':
+                        $this->actividad->createActividad();
+                        break;
+                    case 'PUT':
+                        if (isset($url[1]) && is_numeric($url[1])) 
+                            $this->actividad->editActividad($url[1]);
+                        break;
+                    case 'DELETE':
+                        if (isset($url[1]) && is_numeric($url[1]))
+                            $this->actividad->deleteActividad($url[1]);
                         break;
                     default:
                         echo json_encode(['error' => 'method not found']);

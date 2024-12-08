@@ -94,6 +94,4 @@ export default function Botones(props){
 	}
 	var resu=<div className="contenedorBotones">{x}</div>
 	return resu;
-
-	
 }
