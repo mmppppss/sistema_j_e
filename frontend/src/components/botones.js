@@ -24,12 +24,12 @@ function defineButtons(permission){
 			route:"/historialmedico"
 		},
 		gesActividades:{
-			name:"Gestionar actividades",
+			name:"Gestionar Actividades",
 			route:"/actividades"
 		},
 		gesNiños:{
 			name:"Gestionar niños",
-			route:"/niños"
+			route:"/ninos"
 		},
 		gesTutores:{
 			name:"Gestionar tutores",
@@ -66,7 +66,7 @@ function defineButtons(permission){
 
 	}
 	if(permission == 0){//administrados
-		return [ botones.crearUsuario,botones.crearActividad,botones.crearNino, botones.actualizarNino, botones.actualizarActividad, botones.niño, botones.gesActividades, botones.gesNiños,botones.gesTutores]
+		return [ botones.crearUsuario, botones.gesNiños, botones.gesActividades, botones.gesTutores, botones.gesMaterias, botones.gesVoluntario]
 	}else if(permission == 1){//maestro
 		return [botones.gesMaterias]
 	}else if(permission==2){//voluntario
