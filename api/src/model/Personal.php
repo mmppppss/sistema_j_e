@@ -1,19 +1,21 @@
 <?php
-
+require_once 'Usuario.php';
 class Personal
 {
-    private $pdo;
+	private $pdo;
+	private $usuario;
 
     public function __construct($pdo)
-    {
-        $this->pdo = $pdo;
+	{
+		$this->pdo = $pdo;
+		$this->usuario = new Usuario($pdo);
     }
 
 
     public function getAll()
     {
         $query = $this->pdo->query("
-            SELECT personal.*, usuario.username 
+            SELECT personal.*, usuario.username, usuario.permission 
             FROM personal
             INNER JOIN usuario ON personal.id = usuario.id
         ");
@@ -34,14 +36,16 @@ class Personal
     }
 
 
-    public function create($id_usuario, $nombre, $apellido_pat, $apellido_mat, $ci, $telefono, $correo, $sexo, $direccion)
+	public function create($nombre, $apellido_pat, $apellido_mat, $ci, $telefono, $correo, $sexo, $direccion, $username, $permission, $password)
     {
         $query = $this->pdo->prepare("
             INSERT INTO personal (id, nombre, apellido_pat, apellido_mat, ci, telefono, correo, sexo, direccion)
             VALUES (:id, :nombre, :apellido_pat, :apellido_mat, :ci, :telefono, :correo, :sexo, :direccion)
-        ");
+		");
+		$queryUsuario = $this->usuario->create($username, $password, $permission);
+		$id = $this->pdo->lastInsertId();
         $query->execute([
-            'id' => $id_usuario,  // La clave foránea que referencia a usuario
+            'id' => $id,  // La clave foránea que referencia a usuario
             'nombre' => $nombre,
             'apellido_pat' => $apellido_pat,
             'apellido_mat' => $apellido_mat,

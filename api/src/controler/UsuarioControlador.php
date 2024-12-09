@@ -35,7 +35,7 @@ class UsuarioControlador
     public function createUsuario()
     {
         $username = $_POST['username'];
-        $hashpassword = md5($_POST['password']);
+        $hashpassword = $_POST['password'];
         $permission = $_POST['permission']; // 0 = admin, 1 = profesor, 2 = voluntario, 3 = médico
 
         if ($permission < 0 || $permission > 3) {

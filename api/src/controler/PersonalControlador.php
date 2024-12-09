@@ -13,7 +13,7 @@ class PersonalControlador
 
     public function getAll()
     {
-        $personal = $this->modeloPersonal->getAll();
+		$personal = $this->modeloPersonal->getAll();
         echo json_encode($personal);
     }
 
@@ -36,9 +36,11 @@ class PersonalControlador
         $correo = $_POST['correo'];
         $sexo = $_POST['sexo'];
         $direccion = $_POST['direccion'];
-        $id_usuario = $_POST['id_usuario'];
+		$username = $_POST['username'];
+		$permission = $_POST['permission'];
+		$password = $_POST['password'];
 
-        $res = $this->modeloPersonal->create($id_usuario, $nombre, $apellido_pat, $apellido_mat, $ci, $telefono, $correo, $sexo, $direccion);
+        $res = $this->modeloPersonal->create($nombre, $apellido_pat, $apellido_mat, $ci, $telefono, $correo, $sexo, $direccion, $username, $permission, $password);
 
         echo json_encode(['message' => 'Personal creado con éxito', 'result' => $res]);
     }
