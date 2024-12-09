@@ -33,7 +33,7 @@ function defineButtons(permission){
 		},
 		gesTutores:{
 			name:"Gestionar tutores",
-			route:"/tutores"
+			route:"/tutor"
 		},
 		gesMaterias:{
 			name:"Gestionar materias",
@@ -63,10 +63,14 @@ function defineButtons(permission){
 			name:"Actualizar niño",
 			route:"/actualizarnino"
 		},
+		gesPersonal:{
+			name:"Gestionar personal",
+			route:"/personal"
+		}
 
 	}
 	if(permission == 0){//administrados
-		return [ botones.crearUsuario, botones.gesNiños, botones.gesActividades, botones.gesTutores, botones.gesMaterias, botones.gesVoluntario]
+		return [ botones.crearUsuario, botones.gesNiños, botones.gesActividades, botones.gesTutores, botones.gesMaterias, botones.gesPersonal]
 	}else if(permission == 1){//maestro
 		return [botones.gesMaterias]
 	}else if(permission==2){//voluntario

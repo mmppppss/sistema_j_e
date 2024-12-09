@@ -18,6 +18,10 @@ import Lista from "./components/niño/Niños"
 //materias
 import CrearMateria from './components/materia/CrearMateria';
 import Materias from './components/materia/Materia';
+//tutor
+//import CrearTutor from './components/tutor/CrearTutor';
+import Tutor from './components/tutor/Tutor';
+import Personal from './components/personal/Personal';
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
@@ -119,6 +123,15 @@ function App() {
 				}
 			break
 
+			//tutor
+			case "tutor":
+				content=<Tutor/>
+			break
+
+			//personal
+			case "personal":
+				content=<Personal/>
+			break
 			case "asistencia":
 				content=<Asistencia/>
 			break
@@ -131,6 +144,7 @@ function App() {
 			case "analisis":
 				content=<AnalisisMedico/>
 			break
+
 			default:
 				content=<Error404/>
 			break
