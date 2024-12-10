@@ -29,8 +29,8 @@ El sistema de informacion se encarga de la gestión de la información de la ONG
 │   │   └── controllers/            #Carpeta de controladores
 │   │
 │   ├── public/                     #Carpeta publica
-│   │   ├── login.php               #Pagina de inicio y manejador de peticiones
-│   │   └── index.php               #Login y manejo de sesion
+│   │   ├── login.php               #Login y manejo de sesion
+│   │   └── index.php               #Pagina de inicio y manejador de peticiones
 │   └─── .env                       #Variables de entorno
 │
 ├── frontend/                       #Carpeta frontend REACT
@@ -51,7 +51,6 @@ El sistema de informacion se encarga de la gestión de la información de la ONG
 │   └── public/                     #Carpeta publica
 │       ├── media/                  #Carpeta multimedia
 │       └── index.html              #Pagina principal
-│
 │
 └── README.md                       #README
 ```
