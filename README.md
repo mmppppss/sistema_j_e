@@ -34,6 +34,24 @@ El sistema de informacion se encarga de la gestión de la información de la ONG
 │   └─── .env                       #Variables de entorno
 │
 ├── frontend/                       #Carpeta frontend REACT
+│   ├── src/                        #Carpeta fuente
+│   │   ├── components/             #Carpeta de componentes
+│   │   │   ├── actividad/          #actividad
+│   │   │   ├── materia/            #materia
+│   │   │   ├── niño/               #niño
+│   │   │   ├── personal/           #personal
+│   │   │   ├── tutor/              #tutor
+│   │   │   ├── Error404.js         #Pagina de 404
+│   │   │   └── login.js            #Componente de login
+│   │   │
+│   │   ├── css/                    #Carpeta estilos
+│   │   ├── App.js                  #Pagina principal
+│   │   └── index.js                #Componente principal
+│   │
+│   └── public/                     #Carpeta publica
+│       ├── media/                  #Carpeta multimedia
+│       └── index.html              #Pagina principal
+│
 │
 └── README.md                       #README
 ```
