@@ -111,7 +111,7 @@ function App() {
 */
 			//materias
 			case "materias":
-				content=<Materias/>
+				content=<Materias session={session}/>
 				//content=<MateriaVoluntario/>
 			break
 			case "crearmateria":
