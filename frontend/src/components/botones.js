@@ -81,7 +81,7 @@ function defineButtons(permission){
 	}else if(permission==2){//voluntario
 		return[botones.gesActividades, botones.gesMaterias]
 	}else if(permission==3){//medico
-		return[botones.gestAnalisis, botones.historialMedico]
+		return[botones.gestAnalisis]
 	}
 }
 

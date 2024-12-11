@@ -40,7 +40,7 @@ export default function Actividad(){
 		fetch('http://100.25.250.69/actividad')
 			.then((response) => response.json())
 			.then((data) => {
-				setLista(data)
+				setActividad(data)
 				console.log(data)
 			})
 	}, [])

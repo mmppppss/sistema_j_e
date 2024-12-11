@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 export default function HistorialMedico(){
 	const [historial, setHistorial] = useState([]);
 	useEffect(()=>{
-		fetch('http://100.25.250.69/historial')
+		fetch('http://100.25.250.69/historialmedico')
 		.then((response) => response.json())
 		.then((data) => {
 			setHistorial(data)

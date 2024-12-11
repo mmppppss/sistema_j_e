@@ -61,7 +61,6 @@ export default function ListaMaterias(props) {
       .then((response) => response.json())
       .then((data) => {
         setLista(data);
-        console.log(data);
       });
   }, []);
   function a(){
