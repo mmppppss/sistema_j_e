@@ -5,7 +5,7 @@ import Botones from "./components/botones"
 import Asistencia from './components/Asistencia';
 import CrearUsuario from './components/CrearUsuario';
 import {Error404, Error401} from './components/404'
-import {ActividadVoluntario, MateriaVoluntario} from './components/GestionarVoluntario';
+//import {ActividadVoluntario, MateriaVoluntario} from './components/GestionarVoluntario';
 //Actividad
 import CrearActividad from './components/actividad/CrearActividad';
 import ActualizarActividad from './components/actividad/ActualizarActividad';
@@ -25,7 +25,7 @@ import CrearPersonal from './components/personal/CrearPersonal';
 //medico
 import NuevoAnalisisMedico from './components/analisismedico/NuevoAnalisisMedico';
 import AnalisisMedico from './components/analisismedico/AnalisisMedico';
-import HistorialMedico from './components/HistorialMedico';
+import HistorialMedico from './components/analisismedico/HistorialMedico';
 
 
 function App() {
