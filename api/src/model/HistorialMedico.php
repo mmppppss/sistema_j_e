@@ -18,35 +18,14 @@ class Historial{
 		return $historial->fetch();
 	}
 	
-	public function create($ci, $nombre, $apellido_pat, $apellido_mat, $sexo, $telefono, $direccion, $correo){
-		$query=$this->pdo->prepare("INSERT INTO analisis_medico (ci, nombre, apellido_pat, apellido_mat, sexo, telefono, direccion, correo) VALUES (:ci, :nombre, :apellido_pat, :apellido_mat, :sexo, :telefono, :direccion, :correo)");
-		echo "hola";
-		$query->execute([
-			'ci' => $ci,
-			'nombre' => $nombre,
-			'apellido_pat' => $apellido_pat,
-			'apellido_mat' => $apellido_mat,
-			'sexo' => $sexo,
-			'telefono' => $telefono,
-			'direccion' => $direccion,
-			'correo' => $correo
-		]);
+	public function create($id_niño, $id_medico, $temperatura, $pulso, $presion, $observacion){
+		$query=$this->pdo->prepare('INSERT INTO analisis_medico (id_niño, id_medico, temperatura, pulso, presion, observacion, fecha, hora) VALUES (:id_niño, :id_medico, :temperatura, :pulso, :presion, :observacion, now(), DATE_FORMAT(NOW( ), "%H:%i" )');
+		$query->execute(['id_niño' => $id_niño, 'id_medico' => $id_medico, 'temperatura' => $temperatura, 'pulso' => $pulso, 'presion' => $presion, 'observacion' => $observacion, ]);
 		return $query;
 	}
 	
-	public function update($id, $ci, $nombre, $apellido_pat, $apellido_mat, $sexo, $telefono, $direccion, $correo){
-		$query = $this->pdo->prepare("UPDATE analisis_medico SET ci = :ci, nombre = :nombre, apellido_pat = :apellido_pat, apellido_mat = :apellido_mat, sexo = :sexo, telefono = :telefono, correo = :correo ,direccion = :direccion WHERE id = :id");
-		$query->execute([
-			'id' => $id,
-			'ci' => $ci,
-			'nombre' => $nombre,
-			'apellido_pat' => $apellido_pat,
-			'apellido_mat' => $apellido_mat,
-			'sexo' => $sexo,
-			'telefono' => $telefono,
-			'direccion' => $direccion,
-			'correo' => $correo
-		]);
+	public function update($id_niño, $id_medico, $temperatura, $pulso, $presion, $observacion){
+		$query=$this->pdo->prepare('UPDATE analisis_medico SET id_niño = :id_niño, id_medico = :id_medico, temperatura = :temperatura, pulso = :pulso, presion = :presion, observacion = :observacion, fecha = now(), hora = DATE_FORMAT(NOW( ), "%H:%i" ) WHERE id = :id');
 		return $query;
 	}
 

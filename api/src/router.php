@@ -275,6 +275,14 @@ class Router
 							$this->historial->getAll();
 						}
 						break;
+                    case 'POST':
+                        $this->historial->createHistorial();
+                        break;
+                    case 'PUT':
+                        if (isset($url[1]) && is_numeric($url[1]))
+                            $this->historial->editHistorial($url[1]);
+                        break;
+                    
 					default:
 						echo json_encode(['error' => 'method not found']);
 						break;

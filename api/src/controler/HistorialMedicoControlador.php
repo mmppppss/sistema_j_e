@@ -19,30 +19,29 @@ class HistorialMedicoControlador{
 	}
 
 	public function createHistorial(){
-		$ci = $_POST['ci'];
-		$nombre = $_POST['nombre'];
-		$apellido_pat = $_POST['apellido_pat'];
-		$apellido_mat = $_POST['apellido_mat'];
-		$sexo = $_POST['sexo'];
-		$telefono = $_POST['telefono'];
-		$direccion = $_POST['direccion'];
-		$correo = $_POST['correo'];
-		$res = $this->modeloHistorial->create($ci, $nombre, $apellido_pat, $apellido_mat, $sexo, $telefono, $direccion, $correo);
+		$id_niño= $_POST ['id_niño'];
+		$id_medico= $_POST ['id_medico'];
+		$temperatura= $_POST ['temperatura'];
+		$pulso= $_POST ['pulso'];
+		$presion= $_POST ['presion'];
+		$observacion= $_POST ['observacion'];
+		
+		$res = $this->modeloHistorial->create($id_niño, $id_medico, $temperatura, $pulso, $presion, $observacion);
 		echo json_encode($res);
+		
 	}
 
 	public function editHistorial($id){
 		$input = file_get_contents('php://input');
 		$data = json_decode($input, true);
-		$ci = $data['ci'];
-		$nombre = $data['nombre'];
-		$apellido_pat = $data['apellido_pat'];
-		$apellido_mat = $data['apellido_mat'];
-		$sexo = $data['sexo'];
-		$telefono = $data['telefono'];
-		$direccion = $data['direccion'];
-		$correo = $data['correo'];
-		$res = $this->modeloHistorial->update($id, $ci, $nombre, $apellido_pat, $apellido_mat, $sexo, $telefono, $direccion, $correo);
+		$id_niño= $data ['id_niño'];
+		$id_medico= $data ['id_medico'];
+		$temperatura= $data ['temperatura'];
+		$pulso= $data['pulso'];
+		$presion= $data ['presion'];
+		$observacion= $data ['observacion'];
+		
+		$res = $this->modeloHistorial->update($id_niño, $id_medico, $temperatura, $pulso, $presion, $observacion);
 		echo json_encode($res);
 	}
 
