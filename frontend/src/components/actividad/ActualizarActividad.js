@@ -14,7 +14,7 @@ const ActualizarActividad = ({ actividadId }) => {
         // Simular una petición GET para obtener los datos actuales
         const fetchActividad = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/actividades/${actividadId}`);
+                const response = await fetch(`http://100.25.250.69/actividad/${actividadId}`);
                 const data = await response.json();
                 setFormData({
                     nombre: data.nombre,
@@ -42,7 +42,7 @@ const ActualizarActividad = ({ actividadId }) => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:3000/actividades/${actividadId}`, {
+            const response = await fetch(`http://100.25.250.69/actividad/${actividadId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

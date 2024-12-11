@@ -28,11 +28,23 @@ function borrarActividad(id, setActividad) {
 	const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar esta actividad?");
 	
 	if (confirmacion) {
-	  // Filtrar las actividades para eliminar la actividad con ese ID
-	  setActividad(prevActividades => prevActividades.filter(actividad => actividad.id !== id));
-	  console.log(`Actividad con ID ${id} eliminada`);
+		// Filtrar las actividades para eliminar la actividad con ese ID
+		try {
+			fetch(`http://100.25.250.69/actividad/${id}`, {
+				method: 'DELETE',
+			}).then((response) => {
+				if (response.ok) {
+					setActividad((prevActividad) => prevActividad.filter((actividad) => actividad.id !== id));
+					alert('Actividad eliminada con exito');
+				} else {
+					alert('Error al eliminar la actividad');
+				}
+			});
+		} catch (error) {
+			alert('Error al eliminar la actividad');
+		}
 	}
-  }
+}
   
 export default function Actividad(){
 	const [actividad, setActividad] = useState([]);
@@ -40,7 +52,7 @@ export default function Actividad(){
 		fetch('http://100.25.250.69/actividad')
 			.then((response) => response.json())
 			.then((data) => {
-				setLista(data)
+				setActividad(data)
 				console.log(data)
 			})
 	}, [])

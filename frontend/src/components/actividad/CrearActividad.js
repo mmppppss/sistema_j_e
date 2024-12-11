@@ -17,21 +17,23 @@ const CrearActividad = () => {
             [name]: value,
         });
     };
-
+	const form = new URLSearchParams(formData);
     const handleSubmit = (e) => {
         e.preventDefault();
-		fetch('/actividad', {
+		fetch('http://100.25.250.69/actividad', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
-			body: formData.toString(),
+			body: form.toString(),
 		})
 		.then((response) => response.json())
 		.then((data) => {
+			alert("Actividad registrada ");
 			setMessage(data.message);
 		})
 		.catch((error) => {
+			alert("Error al registrar la actividad");
 			setMessage('Error del servidor: '+error);
 		});
 
