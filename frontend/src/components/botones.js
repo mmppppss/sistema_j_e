@@ -15,10 +15,15 @@ function defineButtons(permission){
 			name:"Ver lista",
 			route:"/lista"
 		},
-		analisis:{
-			name:"registrar analisis",
-			route:"/analisis"
+		gestAnalisis:{
+			name:"Gestionar analisis",
+			route:"/analisismedico"
 		},
+		crearanalisis:{
+			name:"Registrar analisis",
+			route:"/nuevoanalisis"
+		},
+
 		historialMedico:{
 			name:"Ver historial medico",
 			route:"/historialmedico"
@@ -76,7 +81,7 @@ function defineButtons(permission){
 	}else if(permission==2){//voluntario
 		return[botones.gesActividades, botones.gesMaterias]
 	}else if(permission==3){//medico
-		return[botones.historialMedico]
+		return[botones.gestAnalisis, botones.historialMedico]
 	}
 }
 
