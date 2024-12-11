@@ -1,7 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "../actividad/Actividad.css";
 
-function elementoMateria(materia, setLista) {
+function elementoMateria(materia, setLista, session) {
+  function x(){if(session.permission == 0){
+    return(<><td>
+            <input
+              type="button"
+              value="Editar"
+              onClick={() => {
+                window.location.href = `/actualizarmateria/${materia.id}`;
+              } } />
+          </td><td>
+              <input
+                type="button"
+                value="Eliminar"
+                onClick={() => borrarMateria(materia.id, setLista)} />
+            </td></>)
+          }
+        }
   return (
     <tr>
       <td>{materia.nombre}</td>
@@ -10,22 +26,7 @@ function elementoMateria(materia, setLista) {
       <td>{materia.descripcion}</td>
       <td>{materia.fecha}</td>
       <td>{materia.hora}</td>
-      <td>
-        <input
-          type="button"
-          value="Editar"
-          onClick={() => {
-            window.location.href = `/actualizarmateria/${materia.id}`;
-          }}
-        />
-      </td>
-      <td>
-        <input
-          type="button"
-          value="Eliminar"
-          onClick={() => borrarMateria(materia.id, setLista)}
-        />
-      </td>
+      {x()}
     </tr>
   );
 }
@@ -52,7 +53,7 @@ async function borrarMateria(id, setLista) {
   }
 }
 
-export default function ListaMaterias() {
+export default function ListaMaterias(props) {
   const [lista, setLista] = useState([]);
 
   useEffect(() => {
@@ -63,7 +64,18 @@ export default function ListaMaterias() {
         console.log(data);
       });
   }, []);
-
+  function a(){
+    if(props.session.permission == 0){
+    return (<th>
+      <input
+        type="button"
+        onClick={() => {
+          window.location.href = `/crearmateria`;
+        }}
+        value="Agregar Materia Nueva"
+      />
+      </th>)
+    }}
   return (
     <table>
       <tr className="titulos">
@@ -74,18 +86,10 @@ export default function ListaMaterias() {
         <th>Fecha</th>
         <th>Hora</th>
         <th></th>
-        <th>
-          <input
-            type="button"
-            onClick={() => {
-              window.location.href = `/crearmateria`;
-            }}
-            value="Agregar Materia Nueva"
-          />
-        </th>
+        { a() }
       </tr>
       {lista.length > 0 ? (
-        lista.map((materia) => elementoMateria(materia, setLista))
+        lista.map((materia) => elementoMateria(materia, setLista, props.session))
       ) : (
         <tr>
           <td colSpan="8">No hay materias disponibles</td>
