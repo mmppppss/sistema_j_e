@@ -37,7 +37,12 @@ function borrarActividad(id, setActividad) {
 export default function Actividad(){
 	const [actividad, setActividad] = useState([]);
 	useEffect(()=>{
-		setActividad([{id: 1, nombre:"hjhgjj", descripcion:"kjkjk", fecha:"das", hora:"jja"},{id:2, nombre:"jardineria", descripcion:"riegue de plantas", fecha:"19_02", hora:"jja"}])
+		fetch('http://100.25.250.69/actividad')
+			.then((response) => response.json())
+			.then((data) => {
+				setLista(data)
+				console.log(data)
+			})
 	}, [])
 	
 	var lineas=[];

@@ -47,11 +47,11 @@ function defineButtons(permission){
 		gesVoluntario:{
 			name:"Gestionar voluntario",
 			route:"/voluntario"
-		},
+		},/*
 		crearUsuario:{
 			name:"Crear usuario",
 			route:"/crearusuario"
-		},
+		},*/
 		crearActividad:{
 			name:"Crear actividad",
 			route:"/crearactividad"
@@ -75,7 +75,7 @@ function defineButtons(permission){
 
 	}
 	if(permission == 0){//administrados
-		return [ botones.crearUsuario, botones.gesNiños, botones.gesActividades, botones.gesTutores, botones.gesMaterias, botones.gesPersonal]
+		return [botones.gesNiños, botones.gesActividades, botones.gesTutores, botones.gesMaterias, botones.gesPersonal]
 	}else if(permission == 1){//maestro
 		return [botones.gesMaterias]
 	}else if(permission==2){//voluntario
@@ -101,6 +101,15 @@ export default function Botones(props){
 	for(var i of a){
 		x.push(Boton(i))
 	}
-	var resu=<div className="contenedorBotones">{x}</div>
+	var resu=<div className="contenedorBotones">
+		{x}
+		<div className="boton">
+			<input type="submit" value="Cerrar Sesion" onClick={()=>{
+				window.location.href = "/login"
+				localStorage.removeItem('session'); 
+
+			}}/>
+		</div>
+		</div>
 	return resu;
 }
