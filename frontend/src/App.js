@@ -3,8 +3,6 @@ import './css/App.css';
 import Login from "./components/Login";
 import Botones from "./components/botones"
 import Asistencia from './components/Asistencia';
-import AnalisisMedico from './components/AnalisisMedico';
-import HistorialMedico from './components/HistorialMedico';
 import CrearUsuario from './components/CrearUsuario';
 import {Error404, Error401} from './components/404'
 import {ActividadVoluntario, MateriaVoluntario} from './components/GestionarVoluntario';
@@ -22,6 +20,14 @@ import Materias from './components/materia/Materia';
 //import CrearTutor from './components/tutor/CrearTutor';
 import Tutor from './components/tutor/Tutor';
 import Personal from './components/personal/Personal';
+import CrearPersonal from './components/personal/CrearPersonal';
+
+//medico
+import NuevoAnalisisMedico from './components/analisismedico/NuevoAnalisisMedico';
+import AnalisisMedico from './components/analisismedico/AnalisisMedico';
+import HistorialMedico from './components/HistorialMedico';
+
+
 function App() {
 	const [session, setSession] = useState([])
 	const [ruta, setRuta] = useState([])
@@ -93,7 +99,7 @@ function App() {
 					content=<Error401/>
 				}
 			break
-
+/*
 			//personal
 			case "crearusuario":
 				if(session.permission==0){
@@ -102,7 +108,7 @@ function App() {
 					content=<Error401/>
 				}
 			break
-
+*/
 			//materias
 			case "materias":
 				content=<Materias/>
@@ -132,18 +138,43 @@ function App() {
 			case "personal":
 				content=<Personal/>
 			break
+			case "crearpersonal":
+				if(session.permission==0){
+					content=<CrearPersonal personalId={window.location.pathname.split("/")[2]}/>
+				}else{
+					content=<Error401/>
+				}
+			break	
+			case "actualizarpersonal":
+				if(session.permission==0){
+					content=<CrearPersonal personalId={window.location.pathname.split("/")[2]}/>
+				}else{
+					content=<Error401/>
+				}
+			break
+
 			case "asistencia":
 				content=<Asistencia/>
 			break
-			case "analisis":
+			//medico
+			case "analisismedico":
 				content=<AnalisisMedico/>
 			break
 			case "historialmedico":
-				content=<HistorialMedico/>
+				if(session.permission==3){
+					content =  <HistorialMedico/>
+				}else{
+					content=<Error401/>
+				}
 			break
-			case "analisis":
-				content=<AnalisisMedico/>
+			case "nuevoanalisis":
+				if(session.permission==3){
+					content=<NuevoAnalisisMedico/>
+				}else{
+					content=<Error401/>
+				}
 			break
+
 
 			default:
 				content=<Error404/>
