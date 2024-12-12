@@ -13,10 +13,10 @@ class Profesor
     public function getAll()
     {
         $query = $this->pdo->query("
-            SELECT profesor.*, personal.*, usuario.username 
-            FROM profesor
-            INNER JOIN personal ON profesor.id = personal.id
-            INNER JOIN usuario ON personal.id = usuario.id
+            SELECT personal.*, usuario.username 
+            FROM personal
+			INNER JOIN usuario ON personal.id = usuario.id
+			WHERE usuario.permission = 1;
         ");
         return $query->fetchAll();
     }
@@ -27,9 +27,8 @@ class Profesor
         $query = $this->pdo->prepare("
             SELECT profesor.*, personal.*, usuario.username 
             FROM profesor
-            INNER JOIN personal ON profesor.id = personal.id
             INNER JOIN usuario ON personal.id = usuario.id
-            WHERE profesor.id = :id
+            WHERE usuario.id = :id
         ");
         $query->execute(['id' => $id]);
         return $query->fetch();

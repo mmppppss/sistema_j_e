@@ -13,10 +13,10 @@ class Voluntario
     public function getAll()
     {
         $query = $this->pdo->query("
-            SELECT voluntario.*, personal.*, usuario.username 
-            FROM voluntario
-            INNER JOIN personal ON voluntario.id = personal.id
-            INNER JOIN usuario ON personal.id = usuario.id
+            SELECT personal.*, usuario.username 
+            FROM personal
+			INNER JOIN usuario ON personal.id = usuario.id
+			WHERE usuario.permission = 2
         ");
         return $query->fetchAll();
     }
