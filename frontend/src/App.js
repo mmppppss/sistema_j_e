@@ -178,7 +178,7 @@ function App() {
 			break
 			case "historialmedico":
 				if(session.permission==3){
-					content =  <HistorialMedico/>
+					content =  <HistorialMedico niñoId={window.location.pathname.split("/")[2]}/>
 				}else{
 					content=<Error401/>
 				}
