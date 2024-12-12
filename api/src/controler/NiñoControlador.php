@@ -29,7 +29,8 @@ class NiñoControlador{
 		$sexo = $_POST['sexo'];
 		$telefono = $_POST['telefono'];
 		$fecha_nacimiento = $_POST['fecha_nacimiento'];
-		$res = $this->modeloNiño->create($ci, $nombre, $apellido_pat, $apellido_mat, $sexo, $telefono, $fecha_nacimiento);
+		$id_tutor = $_POST['id_tutor'];
+		$res = $this->modeloNiño->create($ci, $nombre, $apellido_pat, $apellido_mat, $sexo, $telefono, $fecha_nacimiento, $id_tutor);
 		echo json_encode($res);
 	}
 
@@ -43,7 +44,8 @@ class NiñoControlador{
 		$sexo = $data['sexo'];
 		$telefono = $data['telefono'];
 		$fecha_nacimiento = $data['fecha_nacimiento'];
-		$res = $this->modeloNiño->update($id, $ci, $nombre, $apellido_pat, $apellido_mat, $sexo, $telefono, $fecha_nacimiento);
+		$id_tutor = $data['id_tutor'];
+		$res = $this->modeloNiño->update($id, $ci, $nombre, $apellido_pat, $apellido_mat, $sexo, $telefono, $fecha_nacimiento, $id_tutor);
 		echo json_encode($res);
 	}
 
