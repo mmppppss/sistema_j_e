@@ -53,7 +53,7 @@ function App() {
 	var content=null;
 	var logo=null;
 	if(session.session){
-		logo=<img className="logo" src="logo192.png" alt=""/>
+		logo=<img className="logo" src="../logo192.png" alt=""/>
 		switch (ruta){
 			case "":
 			case "inicio":

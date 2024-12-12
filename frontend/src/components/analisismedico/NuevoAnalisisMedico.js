@@ -3,7 +3,7 @@ import '../Login.css';
 
 const NuevoAnalisisMedico = (props) => {
     const [formData, setFormData] = useState({
-        id_nino: '',
+        id_niño: '',
         id_medico: '',
         temperatura: '',
         pulso: '',
@@ -26,12 +26,13 @@ const NuevoAnalisisMedico = (props) => {
         const method = 'POST';
 
         try {
+			const data = new URLSearchParams(formData);
             const response = await fetch(url, {
                 method,
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: JSON.stringify(formData),
+                body: data.toString(),
             });
 
             if (response.ok) {
@@ -55,8 +56,8 @@ const NuevoAnalisisMedico = (props) => {
                 ID Niño:
                 <input
                     type="text"
-                    name="id_nino"
-                    value={formData.id_nino}
+                    name="id_niño"
+                    value={formData.id_niño}
                     onChange={handleChange}
                     className="crear-analisis-input"
                     required

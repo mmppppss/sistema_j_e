@@ -49,7 +49,7 @@ export default function Login(props) {
 		<div className="contenedor">
 		<div className="contenedorImagen">
 		<img className="logo" src="logo192.png" alt=""/>
-		<img className="imagen" src="media/imagen1.jpg" alt=""/>
+		<img className="imagen" src="media/imagen3.webp" alt=""/>
 		</div>
 		<div className="contenedorFormulario">
 		<form action="">
