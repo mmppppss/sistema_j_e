@@ -26,7 +26,7 @@ class Personal
     public function getById($id)
     {
         $query = $this->pdo->prepare("
-            SELECT personal.*, usuario.username 
+            SELECT personal.*, usuario.username, usuario.permission
             FROM personal
             INNER JOIN usuario ON personal.id = usuario.id
             WHERE personal.id = :id
@@ -59,14 +59,15 @@ class Personal
     }
 
 
-    public function update($id, $nombre, $apellido_pat, $apellido_mat, $ci, $telefono, $correo, $sexo, $direccion)
+    public function update($id, $nombre, $apellido_pat, $apellido_mat, $ci, $telefono, $correo, $sexo, $direccion, $username, $password, $permission)
     {
         $query = $this->pdo->prepare("
             UPDATE personal
             SET nombre = :nombre, apellido_pat = :apellido_pat, apellido_mat = :apellido_mat,
                 ci = :ci, telefono = :telefono, correo = :correo, sexo = :sexo, direccion = :direccion
             WHERE id = :id
-        ");
+		");
+		$userup = $this->usuario->update($id, $username, $password, $permission);
         $query->execute([
             'id' => $id,
             'nombre' => $nombre,
@@ -76,7 +77,7 @@ class Personal
             'telefono' => $telefono,
             'correo' => $correo,
             'sexo' => $sexo,
-            'direccion' => $direccion
+			'direccion' => $direccion,
         ]);
         return $query;
     }
