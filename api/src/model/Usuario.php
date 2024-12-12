@@ -55,17 +55,17 @@ class Usuario
     }
 
 
-    public function update($id, $username, $hashpassword, $permission)
+    public function update($id, $username, $password, $permission)
     {
         $query = $this->pdo->prepare("
             UPDATE usuario
-            SET username = :username, hash_password = :hashpassword, permission = :permission
+            SET username = :username, hash_password = :password, permission = :permission
             WHERE id = :id
         ");
         $query->execute([
             'id' => $id,
             'username' => $username,
-            'hashpassword' => $hashpassword,
+            'password' => md5($password),
             'permission' => $permission
         ]);
         return $query;

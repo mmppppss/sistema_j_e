@@ -58,9 +58,12 @@ class PersonalControlador
         $telefono = $data['telefono'];
         $correo = $data['correo'];
         $sexo = $data['sexo'];
-        $direccion = $data['direccion'];
+		$direccion = $data['direccion'];
+		$username = $data['username'];
+		$permission = $data['permission'];
+		$permission = $data['permission'];
 
-        $res = $this->modeloPersonal->update($id, $nombre, $apellido_pat, $apellido_mat, $ci, $telefono, $correo, $sexo, $direccion);
+        $res = $this->modeloPersonal->update($id, $nombre, $apellido_pat, $apellido_mat, $ci, $telefono, $correo, $sexo, $direccion, $username, $password, $permission);
 
         echo json_encode(['message' => 'Personal actualizado con éxito', 'result' => $res]);
     }
