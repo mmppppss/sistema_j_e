@@ -19,7 +19,7 @@ class Historial{
 	}
 	
 	public function create($id_niño, $id_medico, $temperatura, $pulso, $presion, $observacion){
-		$query=$this->pdo->prepare('INSERT INTO analisis_medico (id_niño, id_medico, temperatura, pulso, presion, observacion, fecha, hora) VALUES (:id_niño, :id_medico, :temperatura, :pulso, :presion, :observacion, now(), DATE_FORMAT(NOW( ), "%H:%i" )');
+		$query=$this->pdo->prepare('INSERT INTO analisis_medico (id_niño, id_medico, temperatura, pulso, presion, observacion) VALUES (:id_niño, :id_medico, :temperatura, :pulso, :presion, :observacion');
 		$query->execute(['id_niño' => $id_niño, 'id_medico' => $id_medico, 'temperatura' => $temperatura, 'pulso' => $pulso, 'presion' => $presion, 'observacion' => $observacion, ]);
 		return $query;
 	}

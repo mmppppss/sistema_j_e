@@ -22,7 +22,7 @@ const NuevoAnalisisMedico = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const url = 'http://100.25.250.69/historialmedico'; // Cambia la URL según tu API
+        const url = 'http://100.25.250.69/historial'; // Cambia la URL según tu API
         const method = 'POST';
 
         try {
