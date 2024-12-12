@@ -29,7 +29,7 @@ async function borrarTutor(id, setLista) {
     const confirmacion = window.confirm("¿Estás seguro de confirmar el eliminado?");
     if (confirmacion) {
         try {
-            const response = await fetch(`http://100.25.250.69/tutores/${id}`, {
+            const response = await fetch(`http://100.25.250.69/tutor/${id}`, {
                 method: 'DELETE',
             });
 

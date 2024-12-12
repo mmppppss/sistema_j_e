@@ -17,8 +17,10 @@ import Lista from "./components/niño/Niños"
 import CrearMateria from './components/materia/CrearMateria';
 import Materias from './components/materia/Materia';
 //tutor
-//import CrearTutor from './components/tutor/CrearTutor';
+import CrearTutor from './components/tutor/CrearTutor';
 import Tutor from './components/tutor/Tutor';
+
+//personal
 import Personal from './components/personal/Personal';
 import CrearPersonal from './components/personal/CrearPersonal';
 
@@ -83,7 +85,7 @@ function App() {
 				
 			//actividad
 			case "actividades":
-				content=<Actividad/>
+				content=<Actividad session={session}/>
 			break
 			case "crearactividad":
 				if(session.permission==0){
@@ -121,7 +123,7 @@ function App() {
 					content=<Error401/>
 				}
 			break
-			case "materiaactividad":
+			case "actualizarmateria":
 				if(session.permission==0){
 					content=<CrearMateria materiaId={window.location.pathname.split("/")[2]}/>
 				}else{
@@ -132,7 +134,21 @@ function App() {
 			//tutor
 			case "tutor":
 				content=<Tutor/>
-			break
+			break	
+			case "creartutor":
+				if(session.permission==0){
+					content=<CrearTutor tutorId={window.location.pathname.split("/")[2]}/>
+				}else{
+					content=<Error401/>
+				}
+			break	
+			case "actualizartutor":
+				if(session.permission==0){
+					content=<CrearTutor tutorId={window.location.pathname.split("/")[2]}/>
+				}else{
+					content=<Error401/>
+				}
+			break	
 
 			//personal
 			case "personal":

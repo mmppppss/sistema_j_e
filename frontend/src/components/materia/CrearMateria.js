@@ -17,7 +17,7 @@ const CrearMateria = (props) => {
       const fetchMateriaData = async () => {
         try {
           const response = await fetch(
-            `http://100.25.250.69/materias/${props.materiaId}`
+            `http://100.25.250.69/materia/${props.materiaId}`
           );
           if (response.ok) {
             const data = await response.json();

@@ -4,8 +4,8 @@ import "../Login.css";
 export default function CrearPersonal({ personalId }) {
     const [formData, setFormData] = useState({
         nombre: '',
-        apellidoPat: '',
-        apellidoMat: '',
+        apellido_pat: '',
+        apellido_mat: '',
         ci: '',
         telefono: '',
         correo: '',
@@ -14,7 +14,7 @@ export default function CrearPersonal({ personalId }) {
         username: '',
         password: '',
         passwordRepeat: '',
-        permisos: -1
+        permission: -1
     });
 
     const [errors, setErrors] = useState({
@@ -50,10 +50,10 @@ export default function CrearPersonal({ personalId }) {
     };
 
     const validarUsuario = () => {
-        const { nombre, apellidoPat, apellidoMat, ci, telefono, correo, sexo, direccion, password, passwordRepeat } = formData;
+        const { nombre, apellido_pat, apellido_mat, ci, telefono, correo, sexo, direccion, password, passwordRepeat } = formData;
         setErrors({ nombreError: '', passwordError: '' });
 
-        if (!nombre || !apellidoPat || !apellidoMat || !ci || !telefono || !correo || !sexo || !direccion) {
+        if (!nombre || !apellido_pat || !apellido_mat || !ci || !telefono || !correo || !sexo || !direccion) {
             setErrors((prev) => ({ ...prev, nombreError: 'Por favor, complete todos los campos' }));
             return;
         }
@@ -68,32 +68,55 @@ export default function CrearPersonal({ personalId }) {
             return;
         }
 
-        if (password.length < 7) {
-            setErrors((prev) => ({ ...prev, passwordError: 'La contraseña debe tener al menos 7 caracteres' }));
+        if (password.length < 5) {
+            setErrors((prev) => ({ ...prev, passwordError: 'La contraseña debe tener al menos 5 caracteres' }));
             return;
         }
 
         const data = new URLSearchParams(formData);
-
-        fetch('http://100.25.250.69/personal', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: data.toString(),
-        })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(response.statusText);
-            }
-            return response.json();
-        })
-        .then((data) => {
-            setMessage(data.message);
-        })
-        .catch((error) => {
+		if (!personalId) {
+			fetch('http://100.25.250.69/personal', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				body: data.toString(),
+			})
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error(response.statusText);
+					}
+					return response.json();
+				})
+				.then((data) => {
+					setMessage(data.message);
+					alert('Personal creado correctamente');
+				})
+				.catch((error) => {
             setErrors((prev) => ({ ...prev, passwordError: 'Error del servidor' }));
-        });
+        	});
+		}else{
+			fetch(`http://100.25.250.69/personal/${personalId}`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(formData),
+			})
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error(response.statusText);
+					}
+					return response.json();
+				})
+				.then((data) => {
+					alert('Personal actualizado correctamente');
+					setMessage("Personal actualizado correctamente");
+				})
+				.catch((error) => {
+					setErrors((prev) => ({ ...prev, passwordError: 'Error del servidor' }));
+				});
+		}
     };
 
     return (
@@ -108,8 +131,8 @@ export default function CrearPersonal({ personalId }) {
                     <input type="text" name="nombre" placeholder="Nombre" onChange={handleChange} value={formData.nombre} />
 
                     <div className="filaCampos">
-                        <input type="text" name="apellidoPat" placeholder="Apellido Paterno" onChange={handleChange} value={formData.apellidoPat} />
-                        <input type="text" name="apellidoMat" placeholder="Apellido Materno" onChange={handleChange} value={formData.apellidoMat} />
+                        <input type="text" name="apellido_pat" placeholder="Apellido Paterno" onChange={handleChange} value={formData.apellido_pat} />
+                        <input type="text" name="apellido_mat" placeholder="Apellido Materno" onChange={handleChange} value={formData.apellido_mat} />
                     </div>
 
                     <input type="email" name="correo" placeholder="Correo" onChange={handleChange} value={formData.correo} />
@@ -126,7 +149,8 @@ export default function CrearPersonal({ personalId }) {
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                         </select>
-                        <select name="permisos" onChange={handleChange} value={formData.permisos}>
+                        <select name="permission" onChange={handleChange} value={formData.permission}>
+							<option value="">Permiso</option>
                             <option value="0">Administrador</option>
                             <option value="1">Profesor</option>
                             <option value="2">Voluntario</option>

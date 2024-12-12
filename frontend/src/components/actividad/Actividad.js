@@ -3,24 +3,27 @@ import { useState, useEffect } from 'react';
 import CrearActividad from "./CrearActividad";
 import ActualizarActividad from "./ActualizarActividad";
 import './Actividad.css'
-function elemento(actividad, setActividad){
+function elemento(actividad, setActividad, session){
+	function x(){if(session.permission == 0){
+		return (<><td><input type="button" onClick={()=>{
+			window.location.href=`/actualizaractividad/${actividad.id}`
+			}}	
+			value="Editar"/></td>
+			<td>
+        	<input 
+        	type="button" 
+        	value="Eliminar"
+        	onClick={() => borrarActividad(actividad.id, setActividad)}
+        />
+      </td></>)
+	}}
 	return(
 		<tr>
 			<td>{actividad.nombre}</td>
 			<td>{actividad.descripcion}</td>
 			<td>{actividad.fecha}</td>
 			<td>{actividad.hora}</td>
-			<td><input type="button" onClick={()=>{
-				window.location.href=`/actualizaractividad/${actividad.id}`
-			}}	
-			value="Editar"/></td>
-			<td>
-        	<input 
-        	type="button" 
-          	value="Eliminar"
-         	onClick={() => borrarActividad(actividad.id, setActividad)}
-        />
-      </td>
+			{x()}
 		</tr>
 	)
 }
@@ -46,7 +49,7 @@ function borrarActividad(id, setActividad) {
 	}
 }
   
-export default function Actividad(){
+export default function Actividad(props){
 	const [actividad, setActividad] = useState([]);
 	useEffect(()=>{
 		fetch('http://100.25.250.69/actividad')
@@ -59,7 +62,7 @@ export default function Actividad(){
 	
 	var lineas=[];
 	for(var i of actividad){
-		lineas.push(elemento(i, setActividad))
+		lineas.push(elemento(i, setActividad, props.session))
 	}
 	return(
 		<table>
