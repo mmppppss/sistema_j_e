@@ -19,12 +19,12 @@ class HistorialMedicoControlador{
 	}
 
 	public function createHistorial(){
-		$id_niño= $_POST ['id_niño'];
-		$id_medico= $_POST ['id_medico'];
-		$temperatura= $_POST ['temperatura'];
-		$pulso= $_POST ['pulso'];
-		$presion= $_POST ['presion'];
-		$observacion= $_POST ['observacion'];
+		$id_niño= $_POST['id_niño'];
+		$id_medico= $_POST['id_medico'];
+		$temperatura= $_POST['temperatura'];
+		$pulso= $_POST['pulso'];
+		$presion= $_POST['presion'];
+		$observacion= $_POST['observacion'];
 		
 		$res = $this->modeloHistorial->create($id_niño, $id_medico, $temperatura, $pulso, $presion, $observacion);
 		echo json_encode($res);
