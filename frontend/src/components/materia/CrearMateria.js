@@ -12,6 +12,8 @@ const CrearMateria = (props) => {
     hora: "",
   });
 
+  const [profesores, setProfesores] = useState([]);
+  const [voluntarios, setVoluntarios] = useState([]);
   useEffect(() => {
     if (props.materiaId) {
       const fetchMateriaData = async () => {
@@ -31,6 +33,18 @@ const CrearMateria = (props) => {
       };
       fetchMateriaData();
     }
+
+	fetch("http://100.25.250.69/profesor")
+	  .then((response) => response.json())
+	  .then((data) => {
+		setProfesores(data);
+	  });
+
+	fetch("http://100.25.250.69/voluntario")
+	  .then((response) => response.json())
+	  .then((data) => {
+		setVoluntarios(data);
+	  });
   }, [props.materiaId]);
 
   const handleChange = (e) => {
@@ -113,26 +127,26 @@ const CrearMateria = (props) => {
 
 		<label className="crear-materia-label">
 		Profesor:
-		<input
-		type="text"
-		name="id_profesor"
-		value={formData.id_profesor}
-		onChange={handleChange}
-		className="crear-materia-input"
-		required
-		/>
+		<select id="id_profesor" name="id_profesor" onChange={handleChange} value={formData.id_profesor}>
+			<option value="Seleccione..."></option>
+			{profesores.map((profesor) => (
+				<option key={profesor.id} value={profesor.id}>
+					{profesor.nombre} {profesor.apellido_pat} {profesor.apellido_mat}
+				</option>
+			))}
+		</select>
 		</label>
 
 		<label className="crear-materia-label">
 		Voluntario:
-		<input
-		type="text"
-		name="id_voluntario"
-		value={formData.id_voluntario}
-		onChange={handleChange}
-		className="crear-materia-input"
-		required
-		/>
+		<select id="id_voluntario" name="id_voluntario" onChange={handleChange} value={formData.id_voluntario}>
+			<option value="Seleccione..."></option>
+			{voluntarios.map((voluntario) => (
+				<option key={voluntario.id} value={voluntario.id}>
+					{voluntario.nombre} {voluntario.apellido_pat} {voluntario.apellido_mat}
+				</option>
+			))}
+		</select>
 		</label>
 
 		<label className="crear-materia-label">

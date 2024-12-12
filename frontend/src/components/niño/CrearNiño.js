@@ -13,7 +13,7 @@ const CrearNiño = (props) => {
         telefono: '',
         sexo: '',
     });
-
+	const [tutores, setTutores] = useState([]);
     useEffect(() => {
         if (props.ninoId) {
             const fetchNiñoData = async () => {
@@ -31,6 +31,11 @@ const CrearNiño = (props) => {
             };
             fetchNiñoData();
         }
+		fetch('http://100.25.250.69/tutor')
+			.then((response) => response.json())
+			.then((data) => {
+				setTutores(data)
+			})
     }, [props.ninoId]);
 
     const handleChange = (e) => {
@@ -39,6 +44,7 @@ const CrearNiño = (props) => {
             ...formData,
             [name]: value,
         });
+		console.log(formData);
     };
 
     const handleSubmit = async (e) => {
@@ -140,6 +146,16 @@ const CrearNiño = (props) => {
 		className="crear-nino-input"
 		required
 		/>
+		</label>
+		<label className="crear-nino-label">
+		Tutor:
+		<select id="id_tutor" name="id_tutor" value={formData.id_tutor} onChange={handleChange} required>
+			<option value="">Seleccione...</option>
+			{tutores.map((tutor) => (
+        	<option key={tutor.id} value={tutor.id}>
+				{tutor.nombre} {tutor.apellido_pat} {tutor.apellido_mat}
+        	</option>))}
+		</select>
 		</label>
 		<label className="crear-nino-label">
 		Fecha de Nacimiento:
