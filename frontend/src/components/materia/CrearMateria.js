@@ -22,7 +22,6 @@ const CrearMateria = (props) => {
           if (response.ok) {
             const data = await response.json();
             setFormData(data);
-            console.log(data);
           } else {
             console.error("Error al cargar los datos de la materia");
           }

@@ -32,7 +32,6 @@ function borrarVoluntarioact(id, setVoluntarioact) {
 	if (confirmacion) {
 	  // Filtrar las voluntarioactes para eliminar la voluntarioact con ese ID
 	  setVoluntarioact(prevVoluntarioactes => prevVoluntarioactes.filter(voluntarioact => voluntarioact.id !== id));
-	  console.log(`Voluntarioact con ID ${id} eliminada`);
 	}
   }
   

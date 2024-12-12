@@ -36,7 +36,6 @@ function App() {
 
 	useEffect(()=>{
 		setRuta(window.location.pathname.split("/")[1])
-		console.log (ruta)
 		const storedSession = localStorage.getItem('session');
         if (storedSession) {
 			const sessionData = JSON.parse(storedSession);
@@ -53,7 +52,7 @@ function App() {
 	var content=null;
 	var logo=null;
 	if(session.session){
-		logo=<img className="logo" src="logo192.png" alt=""/>
+		logo=<img className="logo" src="../logo192.png" alt=""/>
 		switch (ruta){
 			case "":
 			case "inicio":

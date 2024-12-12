@@ -5,7 +5,7 @@ import"../actividad/Actividad.css"
 function elemento(niño, setLista){
 	return(
 		<tr>
-			<td>{niño.nombre} {niño.apellido_mat} {niño.apellido_pat}</td>
+			<td>{niño.nombre} {niño.apellido_pat} {niño.apellido_mat}</td>
 			<td>{niño.id_tutor}</td>
 			<td>{niño.telefono}</td>
 			<td><input type="button" onClick={()=>{
@@ -54,7 +54,6 @@ export default function Lista(){
 			.then((response) => response.json())
 			.then((data) => {
 				setLista(data)
-				console.log(data)
 			})
 	}, [])
 
