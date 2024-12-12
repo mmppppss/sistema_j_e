@@ -96,7 +96,6 @@ function Boton(nombreBoton){
 }
 export default function Botones(props){
 	var a=defineButtons(props.permission);
-	console.log(a)
 	var x=[];
 	for(var i of a){
 		x.push(Boton(i))

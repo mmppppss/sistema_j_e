@@ -56,7 +56,6 @@ export default function Actividad(props){
 			.then((response) => response.json())
 			.then((data) => {
 				setActividad(data)
-				console.log(data)
 			})
 	}, [])
 	

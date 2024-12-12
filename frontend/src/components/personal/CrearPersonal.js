@@ -32,7 +32,6 @@ export default function CrearPersonal({ personalId }) {
                     if (response.ok) {
                         const data = await response.json();
                         setFormData((prev) => ({ ...prev, ...data }));
-                        console.log(data);
                     } else {
                         console.error('Error al cargar los datos del personal');
                     }

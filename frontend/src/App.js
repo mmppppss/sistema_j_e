@@ -36,7 +36,6 @@ function App() {
 
 	useEffect(()=>{
 		setRuta(window.location.pathname.split("/")[1])
-		console.log (ruta)
 		const storedSession = localStorage.getItem('session');
         if (storedSession) {
 			const sessionData = JSON.parse(storedSession);
